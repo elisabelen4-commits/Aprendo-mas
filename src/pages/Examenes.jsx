@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   Layout, 
@@ -11,7 +11,8 @@ import {
   Select,
   Switch,
   Divider,
-  Alert
+  Alert,
+  Radio
 } from 'antd'
 import { 
   ArrowLeftOutlined,
@@ -22,13 +23,21 @@ import {
 import { matematicasData } from '../data/matematicasData'
 
 const { Header, Content } = Layout
-const { Title, Paragraph, Text } = Typography
-const { Option } = Select
+const { Title, Paragraph } = Typography
 
 const Examenes = () => {
   const navigate = useNavigate()
   const [temaSeleccionado, setTemaSeleccionado] = useState('')
   const [modoCalificado, setModoCalificado] = useState(false)
+
+  // Memoizar las opciones del select para evitar re-renderizados
+  const opcionesTemas = useMemo(() => {
+    return matematicasData.temas.map((tema) => ({
+      label: tema.nombre,
+      value: tema.id,
+      descripcion: tema.descripcion
+    }))
+  }, [])
 
   const handleComenzar = () => {
     if (temaSeleccionado) {
@@ -67,7 +76,6 @@ const Examenes = () => {
           </Title>
         </Space>
         
-        <div style={{ width: '80px' }}></div> {/* Spacer para centrar */}
       </Header>
 
       <Content style={{ padding: '24px' }}>
@@ -86,29 +94,19 @@ const Examenes = () => {
 
                 <Space direction="vertical" size="large" style={{ width: '100%' }}>
                   {/* Selector de tema */}
-                  <div>
                     <Title level={5} style={{ marginBottom: '12px' }}>
                       Tema del examen
                     </Title>
-                    <Select
-                      placeholder="Selecciona un tema"
-                      style={{ width: '100%' }}
-                      size="large"
+                    <Radio.Group
+                      style={{display: 'flex',
+                        flexDirection: 'column',
+                        gap: 8}}
+                      options={opcionesTemas}
+                      onChange={e => setTemaSeleccionado(e.target.value)}
+                      optionType="button"
+                      buttonStyle="solid"
                       value={temaSeleccionado}
-                      onChange={setTemaSeleccionado}
-                    >
-                      {matematicasData.temas.map((tema) => (
-                        <Option key={tema.id} value={tema.id}>
-                          <Space>
-                            <span>{tema.nombre}</span>
-                            <Text type="secondary" style={{ fontSize: '12px' }}>
-                              ({tema.preguntas.length} preguntas disponibles)
-                            </Text>
-                          </Space>
-                        </Option>
-                      ))}
-                    </Select>
-                  </div>
+                    />
 
                   <Divider />
 

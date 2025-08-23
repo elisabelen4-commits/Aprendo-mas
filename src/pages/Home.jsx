@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { 
-  Layout, 
-  Button, 
-  Space, 
-  Typography, 
-  Row, 
+import {
+  Layout,
+  Button,
+  Space,
+  Typography,
+  Row,
   Col,
   Card
 } from 'antd'
-import { 
+import {
   CalculatorOutlined,
   BookOutlined,
   GlobalOutlined,
@@ -38,9 +38,9 @@ const Home = () => {
     },
     ...modulosInactivos.map(modulo => ({
       ...modulo,
-      icono: modulo.id === 'espanol' ? <BookOutlined /> : 
-             modulo.id === 'ciencias-sociales' ? <GlobalOutlined /> : 
-             <LaptopOutlined />,
+      icono: modulo.id === 'espanol' ? <BookOutlined /> :
+        modulo.id === 'ciencias-sociales' ? <GlobalOutlined /> :
+          <LaptopOutlined />,
       color: '#d9d9d9'
     }))
   ]
@@ -56,13 +56,14 @@ const Home = () => {
 
   return (
     <Layout style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-      <Header style={{ 
-        background: 'transparent', 
+      <Header style={{
+        background: 'transparent',
         border: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0 24px'
+        padding: '0 24px',
+        height: '200px'
       }}>
         <Space direction="vertical" align="center" size="small">
           <PlayCircleOutlined style={{ fontSize: '48px', color: 'white' }} />
@@ -92,29 +93,29 @@ const Home = () => {
                 bodyStyle={{ padding: '24px' }}
               >
                 <Space direction="vertical" size="middle" style={{ width: '100%', textAlign: 'center' }}>
-                  <div style={{ 
-                    fontSize: '48px', 
+                  <div style={{
+                    fontSize: '48px',
                     color: modulo.activo ? modulo.color : '#bfbfbf',
                     marginBottom: '8px'
                   }}>
                     {modulo.icono}
                   </div>
-                  
-                  <Title level={3} style={{ 
-                    margin: 0, 
+
+                  <Title level={3} style={{
+                    margin: 0,
                     color: modulo.activo ? '#262626' : '#8c8c8c'
                   }}>
                     {modulo.nombre}
                   </Title>
-                  
-                  <Paragraph style={{ 
-                    margin: 0, 
+
+                  <Paragraph style={{
+                    margin: 0,
                     color: modulo.activo ? '#666' : '#bfbfbf',
                     fontSize: '14px'
                   }}>
                     {modulo.descripcion}
                   </Paragraph>
-                  
+
                   {!modulo.activo && (
                     <div style={{
                       background: '#f0f0f0',
