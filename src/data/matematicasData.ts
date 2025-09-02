@@ -1,4 +1,43 @@
-export const matematicasData = {
+// Types
+export interface Video {
+  id: string;
+  titulo: string;
+  duracion: string;
+  url: string;
+  descripcion: string;
+}
+
+export interface Pregunta {
+  id: number;
+  pregunta: string;
+  opciones: string[];
+  respuestaCorrecta: number;
+}
+
+export interface Tema {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  videos: Video[];
+  preguntas: Pregunta[];
+}
+
+export interface ModuloInactivo {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  activo: false;
+}
+
+export interface Resultado {
+  correctas: number;
+  total: number;
+  puntaje: number;
+  timestamp: string;
+  temaId: string;
+}
+
+export const matematicasData: { temas: Tema[] } = {
   temas: [
     {
       id: 'fracciones-basicas',
@@ -171,73 +210,52 @@ export const matematicasData = {
       ]
     }
   ]
-}
-
-export const modulosInactivos = [
-  {
-    id: 'espanol',
-    nombre: 'Español',
-    descripcion: 'Gramática, ortografía y comprensión lectora',
-    activo: false
-  },
-  {
-    id: 'ciencias-sociales',
-    nombre: 'Ciencias Sociales',
-    descripcion: 'Historia, geografía y civismo',
-    activo: false
-  },
-  {
-    id: 'computacion',
-    nombre: 'Computación',
-    descripcion: 'Programación básica y herramientas digitales',
-    activo: false
-  }
-]
+};
 
 // Función para obtener preguntas aleatorias
-export const obtenerPreguntasAleatorias = (temaId, cantidad = 5) => {
-  const tema = matematicasData.temas.find(t => t.id === temaId)
-  if (!tema || !tema.preguntas) return []
+export const obtenerPreguntasAleatorias = (temaId: string, cantidad: number = 5): Pregunta[] => {
+  const tema = matematicasData.temas.find(t => t.id === temaId);
+  if (!tema || !tema.preguntas) return [];
   
-  const preguntas = [...tema.preguntas]
+  const preguntas = [...tema.preguntas];
   // Algoritmo Fisher-Yates para mezclar
   for (let i = preguntas.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[preguntas[i], preguntas[j]] = [preguntas[j], preguntas[i]]
+    const j = Math.floor(Math.random() * (i + 1));
+    [preguntas[i], preguntas[j]] = [preguntas[j], preguntas[i]];
   }
   
-  return preguntas.slice(0, cantidad)
-}
+  return preguntas.slice(0, cantidad);
+};
 
 // Función para calcular puntaje
-export const calcularPuntaje = (respuestas, preguntas) => {
-  let correctas = 0
+export const calcularPuntaje = (respuestas: number[], preguntas: Pregunta[]): Omit<Resultado, 'timestamp' | 'temaId'> => {
+  let correctas = 0;
   respuestas.forEach((respuesta, index) => {
     if (respuesta === preguntas[index].respuestaCorrecta) {
-      correctas++
+      correctas++;
     }
-  })
+  });
   return {
     correctas,
     total: preguntas.length,
     puntaje: Math.round((correctas / preguntas.length) * 100)
-  }
-}
+  };
+};
 
 // Función para guardar resultado en localStorage
-export const guardarResultado = (temaId, resultado) => {
-  const clave = `score:matematicas:${temaId}`
-  const datos = {
+export const guardarResultado = (temaId: string, resultado: Omit<Resultado, 'timestamp' | 'temaId'>): void => {
+  const clave = `score:matematicas:${temaId}`;
+  const datos: Resultado = {
     ...resultado,
     timestamp: new Date().toISOString(),
     temaId
-  }
-  localStorage.setItem(clave, JSON.stringify(datos))
-}
+  };
+  localStorage.setItem(clave, JSON.stringify(datos));
+};
 
 // Función para obtener último resultado
-export const obtenerUltimoResultado = (temaId) => {
-  const clave = `score:matematicas:${temaId}`
-  const datos = localStorage.getItem(clave)
-  return datos ? JSON.parse(datos) : null
-}
+export const obtenerUltimoResultado = (temaId: string): Resultado | null => {
+  const clave = `score:matematicas:${temaId}`;
+  const datos = localStorage.getItem(clave);
+  return datos ? JSON.parse(datos) : null;
+};

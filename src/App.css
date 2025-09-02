@@ -1,132 +1,222 @@
-/* Custom styles for Ant Design v5 integration */
-
-.layout {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Custom header styles */
-.ant-layout-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
-/* Custom card hover effects */
-.ant-card {
+/* Estilos para el contenido principal */
+.ant-layout-content {
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+/* Estilos para las tarjetas de autenticación */
+.auth-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.auth-card .ant-card-body {
+  padding: 32px;
+}
+
+/* Estilos para los formularios */
+.auth-form .ant-form-item {
+  margin-bottom: 24px;
+}
+
+.auth-form .ant-input,
+.auth-form .ant-input-password {
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #e8e8e8;
   transition: all 0.3s ease;
 }
 
-.ant-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+.auth-form .ant-input:focus,
+.auth-form .ant-input-password:focus,
+.auth-form .ant-input:hover,
+.auth-form .ant-input-password:hover {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
 
-/* Custom button styles */
-.ant-btn {
+.auth-form .ant-btn {
+  height: 48px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.auth-form .ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+}
+
+.auth-form .ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(24, 144, 255, 0.6);
+}
+
+.auth-form .ant-btn-default {
+  border: 2px solid #d9d9d9;
+  background: #fff;
+}
+
+.auth-form .ant-btn-default:hover {
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+/* Estilos para el header */
+.app-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-header .ant-layout-header {
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.app-header .logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.app-header .logo h3 {
+  margin: 0;
+  color: #1890ff;
+  font-weight: 700;
+}
+
+/* Estilos para el menú de usuario */
+.user-menu .ant-dropdown-menu-item {
+  padding: 12px 16px;
+}
+
+.user-menu .ant-dropdown-menu-item:hover {
+  background-color: #f0f8ff;
+}
+
+/* Estilos para las alertas */
+.ant-alert {
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+/* Estilos para los enlaces */
+.auth-links {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.auth-links a {
+  color: #1890ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+  color: #096dd9;
+  text-decoration: underline;
+}
+
+/* Estilos para el botón demo */
+.demo-button {
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(82, 196, 26, 0.4);
+}
+
+.demo-button:hover {
+  background: linear-gradient(135deg, #73d13d 0%, #52c41a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(82, 196, 26, 0.6);
+}
+
+/* Estilos para el avatar del usuario */
+.user-avatar {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+/* Estilos para el texto de bienvenida */
+.welcome-text {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Estilos para el contenido de las páginas */
+.page-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 24px 0;
+}
+
+/* Estilos para los botones de navegación */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-buttons .ant-btn {
   border-radius: 6px;
   font-weight: 500;
 }
 
-.ant-btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-}
-
-.ant-btn-primary:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-/* Custom progress bar */
-.ant-progress-bg {
-  border-radius: 4px;
-}
-
-/* Custom statistic styles */
-.ant-statistic-title {
-  font-size: 14px;
-  color: #666;
-}
-
-.ant-statistic-content {
-  font-weight: 600;
-}
-
-/* Custom footer styles */
-.ant-layout-footer {
-  border-top: 1px solid #303030;
-}
-
-/* Responsive adjustments */
+/* Responsive design */
 @media (max-width: 768px) {
-  .ant-layout-content {
-    padding: 16px !important;
+  .app-header .ant-layout-header {
+    padding: 0 16px;
   }
   
-  .ant-card {
-    margin-bottom: 16px;
+  .auth-card .ant-card-body {
+    padding: 24px 20px;
   }
-}
-
-/* Animation for loading states */
-.ant-btn-loading {
-  opacity: 0.8;
-}
-
-/* Custom divider styles */
-.ant-divider {
-  margin: 16px 0;
-}
-
-/* Custom space component */
-.ant-space {
-  width: 100%;
-}
-
-/* Custom avatar styles */
-.ant-avatar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-/* Custom typography styles */
-.ant-typography {
-  color: #262626;
-}
-
-/* Custom card title styles */
-.ant-card-head-title {
-  font-weight: 600;
-  color: #262626;
-}
-
-/* Custom card extra styles */
-.ant-card-extra {
-  color: #8c8c8c;
-}
-
-/* Custom statistic prefix styles */
-.ant-statistic-content-prefix {
-  color: #ff4d4f;
-}
-
-/* Smooth transitions for all interactive elements */
-* {
-  transition: all 0.2s ease;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  
+  .ant-layout-content {
+    padding: 16px;
+  }
+  
+  .page-content {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .nav-buttons .ant-btn {
+    width: 100%;
+  }
 }

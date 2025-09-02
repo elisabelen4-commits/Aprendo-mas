@@ -1,206 +1,276 @@
 # Aprendo+ - Plataforma de Aprendizaje Interactivo
 
-Una aplicación educativa moderna desarrollada con React y Ant Design v5 que ofrece una experiencia de aprendizaje interactiva y personalizada.
+Una plataforma educativa moderna construida con **React + TypeScript**, Redux Toolkit y Ant Design que ofrece módulos de aprendizaje interactivos con sistema de autenticación completo.
 
-## 🚀 Características Principales
+## 🚀 Características
 
-### 📚 Módulos de Aprendizaje
-- **Matemáticas** (Activo): Tutoriales, exámenes y seguimiento de progreso
-- **Español** (Próximamente): Gramática, ortografía y comprensión lectora
-- **Ciencias Sociales** (Próximamente): Historia, geografía y civismo
-- **Computación** (Próximamente): Programación básica y herramientas digitales
+### Sistema de Autenticación
+- **Login/Registro**: Sistema completo de autenticación de usuarios
+- **Credenciales por defecto**: `admin/123` para acceso inmediato
+- **Persistencia**: Sesiones guardadas en localStorage
+- **Rutas protegidas**: Acceso controlado a módulos educativos
+- **Recuperación de contraseña**: Sistema de forgot password
 
-### 🎯 Funcionalidades del Módulo de Matemáticas
+### Módulos Educativos
+- **Matemáticas**: Módulo activo con tutoriales y exámenes
+- **Español**: Próximamente
+- **Ciencias Sociales**: Próximamente
+- **Tecnología**: Próximamente
 
-#### Tutoriales
-- **Videos por tema**: Contenido educativo paso a paso
-- **Temas disponibles**:
-  - Fracciones básicas (2 videos)
-  - Suma y resta (2 videos)
-  - Multiplicación y división (1 video)
-- **Reproductor integrado**: Visualización de videos en modal
-- **Manejo de errores**: Mensajes informativos si el video no carga
+### Tecnologías
+- **React 19 + TypeScript** + Vite
+- **Redux Toolkit** para gestión de estado
+- **Redux Persist** para persistencia
+- **Ant Design** para UI/UX
+- **React Router** para navegación
 
-#### Exámenes
-- **Dos modos de evaluación**:
-  - **Práctica**: Sin guardar puntaje, para practicar sin presión
-  - **Calificado**: Con puntaje guardado en localStorage
-- **5 preguntas aleatorias** por examen
-- **Banco de preguntas**: Algoritmo Fisher-Yates para mezclar preguntas
-- **Navegación intuitiva**: Anterior/Siguiente entre preguntas
-- **Validación completa**: Solo se puede finalizar con todas las preguntas respondidas
+## 🛠️ Instalación
 
-#### Resultados
-- **Puntaje sobre 100**: Cálculo automático del rendimiento
-- **Estadísticas detalladas**: Correctas/total y porcentaje
-- **Mensajes motivacionales**: Según el puntaje obtenido
-- **Persistencia**: Guardado automático en modo calificado
-- **Opciones post-examen**: Reintentar o volver al módulo
-
-## 🛠️ Tecnologías Utilizadas
-
-- **React 19.1.1**: Framework principal
-- **Ant Design 5.27.1**: Componentes de UI
-- **React Router DOM**: Navegación entre páginas
-- **Vite 7.1.2**: Build tool y servidor de desarrollo
-- **CSS3**: Estilos personalizados y animaciones
-
-## 📱 Rutas de la Aplicación
-
-```
-/ → Home (Selección de módulos)
-/matematicas → Módulo de Matemáticas
-/matematicas/tutoriales → Lista de temas
-/matematicas/tutoriales/:temaId → Videos del tema
-/matematicas/examenes → Configuración de examen
-/matematicas/examenes/:temaId/quiz?mode=practice|graded → Quiz
-/resultado → Resultados del examen
-```
-
-## 🎨 Componentes Ant Design Utilizados
-
-### Layout & Navigation
-- `Layout`, `Header`, `Content`: Estructura de páginas
-- `Button`: Navegación y acciones
-- `Space`, `Row`, `Col`: Sistema de grid responsivo
-
-### UI Components
-- `Card`: Contenedores principales
-- `Modal`: Videos y confirmaciones
-- `Select`: Selector de temas
-- `Switch`: Toggle modo práctica/calificado
-- `Radio`: Opciones de respuestas
-- `Progress`: Barras de progreso
-- `Statistic`: Mostrar puntajes
-- `Alert`: Mensajes informativos
-- `Typography`: Jerarquía de texto
-
-### Icons
-- `PlayCircleOutlined`: Videos y reproducción
-- `FileTextOutlined`: Exámenes
-- `CalculatorOutlined`: Matemáticas
-- `TrophyOutlined`: Resultados
-- `CheckCircleOutlined`: Correcto
-- `ArrowLeftOutlined`: Navegación
-
-## 📊 Datos de Demo
-
-### Temas de Matemáticas
-1. **Fracciones básicas**
-   - 2 videos educativos
-   - 6 preguntas de examen
-   - Conceptos: fracciones, equivalencias, operaciones
-
-2. **Suma y resta**
-   - 2 videos educativos
-   - 6 preguntas de examen
-   - Operaciones con números de 2 cifras
-
-3. **Multiplicación y división**
-   - 1 video educativo
-   - 6 preguntas de examen
-   - Tablas básicas y divisiones exactas
-
-## 🔧 Funcionalidades Técnicas
-
-### Algoritmo de Preguntas
-- **Fisher-Yates shuffle**: Mezcla aleatoria de preguntas
-- **Selección de 5**: Preguntas aleatorias por examen
-- **Banco de preguntas**: Mínimo 5 preguntas por tema
-
-### Persistencia de Datos
-- **localStorage**: Guardado de resultados calificados
-- **Clave**: `score:matematicas:[temaId]`
-- **Datos**: puntaje, timestamp, temaId
-
-### Validaciones
-- **Examen completo**: Solo finalizar con todas las preguntas
-- **Confirmación de salida**: Evitar pérdida de respuestas
-- **Manejo de errores**: Videos no disponibles, temas inexistentes
-
-## 🎯 Criterios de Aceptación Implementados
-
-✅ **Home muestra 4 módulos**: Solo Matemáticas navega
-✅ **Flujo completo en Matemáticas**: Módulo → Tutoriales → Videos y Módulo → Exámenes → Quiz → Resultados
-✅ **"Comenzar" deshabilitado**: Hasta elegir tema y modo
-✅ **Cálculo correcto de puntaje**: /100 y aciertos
-✅ **Botones Reintentar y Volver**: Operativos
-✅ **Modal "Próximamente"**: Para módulos inactivos
-
-## 🚀 Instalación y Uso
-
-### Requisitos
-- Node.js 16+ 
-- npm o yarn
-
-### Instalación
+1. **Clonar el repositorio**
 ```bash
-# Clonar repositorio
-git clone <tu-repositorio>
-cd aprendo-mas
+git clone <repository-url>
+cd Aprendo-mas
+```
 
-# Instalar dependencias
+2. **Instalar dependencias**
+```bash
 npm install
+```
 
-# Ejecutar en desarrollo
+3. **Ejecutar en desarrollo**
+```bash
 npm run dev
+```
 
-# Construir para producción
+4. **Construir para producción**
+```bash
 npm run build
 ```
 
-### Scripts Disponibles
-- `npm run dev`: Servidor de desarrollo (puerto 5173/5174)
-- `npm run build`: Construcción para producción
-- `npm run preview`: Previsualizar build de producción
-- `npm run lint`: Ejecutar linter
+5. **Verificar tipos TypeScript**
+```bash
+npm run type-check
+```
 
-## 📱 Responsive Design
+## 🔐 Sistema de Autenticación
 
-La aplicación está optimizada para:
-- **Móviles** (0-576px): Layout vertical, botones grandes
-- **Tablets** (576-992px): Grid adaptativo
-- **Desktop** (992px+): Layout completo con sidebar
+### Credenciales por Defecto
+- **Usuario**: `admin`
+- **Contraseña**: `123`
+- **Rol**: Administrador
 
-## 🎨 Personalización
+### Flujo de Autenticación
 
-### Colores del Tema
-```css
-:root {
-  --ant-primary-color: #667eea;
-  --ant-primary-color-hover: #5a6fd8;
-  --ant-primary-color-active: #4a5fc8;
+1. **Acceso público**: Solo la página de inicio está disponible sin autenticación
+2. **Login**: Usuarios existentes pueden iniciar sesión
+3. **Registro**: Nuevos usuarios pueden crear cuentas
+4. **Acceso protegido**: Módulos educativos requieren autenticación
+5. **Persistencia**: Las sesiones se mantienen entre recargas del navegador
+
+### Rutas de Autenticación
+- `/login` - Iniciar sesión
+- `/register` - Crear cuenta
+- `/forgot-password` - Recuperar contraseña
+
+### Rutas Protegidas
+- `/matematicas` - Módulo de matemáticas
+- `/matematicas/tutoriales` - Tutoriales de matemáticas
+- `/matematicas/examenes` - Exámenes de matemáticas
+- `/resultado` - Resultados de exámenes
+
+## 🏗️ Estructura del Proyecto
+
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── Header.tsx      # Header con navegación y usuario
+│   ├── Login.tsx       # Formulario de login
+│   ├── Register.tsx    # Formulario de registro
+│   ├── ForgotPassword.tsx # Recuperación de contraseña
+│   ├── ProtectedRoute.tsx # Componente de ruta protegida
+│   └── ModalProximamente.tsx # Modal para módulos próximamente
+├── store/              # Estado global con Redux
+│   ├── store.ts        # Configuración del store
+│   └── authSlice.ts    # Slice de autenticación
+├── hooks/              # Hooks personalizados
+│   ├── useAppDispatch.ts
+│   └── useAppSelector.ts
+├── config/             # Configuración de la aplicación
+│   └── routes.ts       # Configuración de rutas
+├── pages/              # Páginas de la aplicación
+│   ├── Home.tsx        # Página principal
+│   ├── ModuloMatematicas.tsx # Módulo de matemáticas
+│   ├── Tutoriales.tsx  # Lista de tutoriales
+│   ├── VideosTema.tsx  # Videos del tema
+│   ├── Examenes.tsx    # Configuración de exámenes
+│   ├── Quiz.tsx        # Examen interactivo
+│   └── Resultado.tsx   # Resultados del examen
+├── data/               # Datos estáticos
+│   └── matematicasData.ts # Datos de matemáticas
+├── App.tsx             # Componente principal
+├── main.tsx            # Punto de entrada
+└── vite-env.d.ts       # Tipos de Vite
+```
+
+## 🔧 Configuración de TypeScript
+
+### Archivos de Configuración
+- `tsconfig.json` - Configuración principal de TypeScript
+- `tsconfig.node.json` - Configuración para herramientas Node.js
+- `vite.config.ts` - Configuración de Vite con soporte TypeScript
+
+### Scripts de TypeScript
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  }
 }
 ```
 
-### Gradientes
-- **Header principal**: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
-- **Botones primarios**: Gradiente azul-morado
-- **Efectos hover**: Transiciones suaves
+## 🔧 Configuración de Redux
 
-## 🔒 Accesibilidad
+### Store Principal
+```typescript
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authReducer from './authSlice';
 
-- **Navegación por teclado**: Todos los elementos son navegables
-- **Contraste AA**: Cumple estándares de accesibilidad
-- **Tipografía ≥16px**: Legibilidad optimizada
-- **Etiquetas aria**: Descripciones para lectores de pantalla
-- **Focus visible**: Indicadores claros de foco
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['auth']
+};
+```
+
+### Slice de Autenticación
+- Gestión de estado de usuario con tipos TypeScript
+- Acciones de login/logout/registro tipadas
+- Manejo de errores y mensajes
+- Validación de credenciales
+
+## 🎨 UI/UX con Ant Design
+
+### Componentes Utilizados
+- **Layout**: Estructura principal de la aplicación
+- **Form**: Formularios de autenticación tipados
+- **Card**: Tarjetas de módulos educativos
+- **Button**: Botones de acción
+- **Alert**: Mensajes informativos
+- **Avatar**: Representación visual del usuario
+
+### Estilos Personalizados
+- Gradientes modernos
+- Sombras y bordes redondeados
+- Transiciones suaves
+- Diseño responsive
+
+## 🚦 Gestión de Estado
+
+### Estado de Autenticación
+```typescript
+interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  error: string | null;
+  message: string | null;
+}
+```
+
+### Acciones Disponibles
+- `loginUser(credentials: LoginCredentials)` - Iniciar sesión
+- `registerUser(userData: RegisterData)` - Registrar usuario
+- `forgotPassword(email: string)` - Recuperar contraseña
+- `logout()` - Cerrar sesión
+- `clearError()` - Limpiar errores
+- `clearMessage()` - Limpiar mensajes
+
+## 🔒 Seguridad
+
+### Protección de Rutas
+- **Rutas públicas**: Accesibles sin autenticación
+- **Rutas protegidas**: Requieren autenticación
+- **Rutas de admin**: Requieren rol de administrador
+
+### Validación de Usuarios
+- Verificación de credenciales
+- Prevención de nombres de usuario duplicados
+- Validación de formato de email
+- Requisitos de contraseña
+
+## 📱 Responsive Design
+
+- **Desktop**: Layout completo con sidebar
+- **Tablet**: Layout adaptativo
+- **Mobile**: Layout vertical optimizado
+
+## 🚀 Despliegue
+
+### GitHub Pages
+```bash
+npm run deploy
+```
+
+### Otros Servicios
+- Netlify
+- Vercel
+- Firebase Hosting
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT.
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-## 🤝 Contribuciones
+## 📞 Contacto
 
-Las contribuciones son bienvenidas. Por favor:
-1. Fork el repositorio
-2. Crea una rama para tu feature
-3. Commit tus cambios
-4. Push a la rama
-5. Abre un Pull Request
+- **Desarrollador**: [Tu Nombre]
+- **Email**: [tu-email@ejemplo.com]
+- **Proyecto**: [https://github.com/usuario/Aprendo-mas](https://github.com/usuario/Aprendo-mas)
 
 ---
 
-**Desarrollado con ❤️ para el aprendizaje interactivo**
+**Nota**: Este proyecto es una demostración de implementación de autenticación con Redux Toolkit, TypeScript y React. Las credenciales por defecto (`admin/123`) están configuradas para facilitar las pruebas y demostraciones.
 
-*"La educación es el arma más poderosa que puedes usar para cambiar el mundo" - Nelson Mandela*
+## 🔄 Migración a TypeScript
+
+### Archivos Convertidos
+- ✅ `src/store/authSlice.js` → `src/store/authSlice.ts`
+- ✅ `src/store/store.js` → `src/store/store.ts`
+- ✅ `src/hooks/useAppDispatch.js` → `src/hooks/useAppDispatch.ts`
+- ✅ `src/hooks/useAppSelector.js` → `src/hooks/useAppSelector.ts`
+- ✅ `src/config/routes.js` → `src/config/routes.ts`
+- ✅ `src/data/matematicasData.js` → `src/data/matematicasData.ts`
+- ✅ `src/main.jsx` → `src/main.tsx`
+- ✅ `src/App.jsx` → `src/App.tsx`
+- ✅ `src/components/Login.jsx` → `src/components/Login.tsx`
+- ✅ `src/components/Register.jsx` → `src/components/Register.tsx`
+- ✅ `src/components/ForgotPassword.jsx` → `src/components/ForgotPassword.tsx`
+- ✅ `src/components/ProtectedRoute.jsx` → `src/components/ProtectedRoute.tsx`
+- ✅ `src/components/Header.jsx` → `src/components/Header.tsx`
+- ✅ `src/components/ModalProximamente.jsx` → `src/components/ModalProximamente.tsx`
+- ✅ `src/pages/Home.jsx` → `src/pages/Home.tsx`
+- ✅ `src/pages/ModuloMatematicas.jsx` → `src/pages/ModuloMatematicas.tsx`
+- ✅ `src/pages/Tutoriales.jsx` → `src/pages/Tutoriales.tsx`
+- ✅ `src/pages/VideosTema.jsx` → `src/pages/VideosTema.tsx`
+- ✅ `src/pages/Examenes.jsx` → `src/pages/Examenes.tsx`
+- ✅ `src/pages/Quiz.jsx` → `src/pages/Quiz.tsx`
+- ✅ `src/pages/Resultado.jsx` → `src/pages/Resultado.tsx`
+
+### Beneficios de la Migración
+- **Tipado estático**: Detección temprana de errores
+- **Mejor IntelliSense**: Autocompletado y navegación mejorada
+- **Refactoring seguro**: Cambios de código más confiables
+- **Documentación viva**: Los tipos sirven como documentación
+- **Mantenibilidad**: Código más fácil de mantener y escalar
