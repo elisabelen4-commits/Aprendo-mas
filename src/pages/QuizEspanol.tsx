@@ -62,8 +62,8 @@ const QuizEspanol: React.FC = () => {
 
   if (!temaId || preguntas.length === 0) {
     return (
-      <div style={{ padding: '24px', textAlign: 'center' }}>
-        <Title level={2}>Tema no encontrado</Title>
+      <div style={{ padding: '16px', textAlign: 'center' }}>
+        <Title level={2} style={{ fontSize: '24px' }}>Tema no encontrado</Title>
         <Button onClick={() => navigate('/espanol/examenes')}>
           Volver a Exámenes
         </Button>
@@ -157,47 +157,48 @@ const QuizEspanol: React.FC = () => {
 
   if (quizState.isCompleted && resultado) {
     return (
-      <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ padding: '16px', maxWidth: '800px', margin: '0 auto' }}>
         <Card style={{ textAlign: 'center' }}>
-          <div style={{ marginBottom: '32px' }}>
-            <TrophyOutlined style={{ fontSize: '64px', color: getPuntajeColor(resultado.puntaje) }} />
-            <Title level={1} style={{ color: getPuntajeColor(resultado.puntaje), margin: '16px 0' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <TrophyOutlined style={{ fontSize: '48px', color: getPuntajeColor(resultado.puntaje) }} />
+            <Title level={1} style={{ color: getPuntajeColor(resultado.puntaje), margin: '16px 0', fontSize: '28px' }}>
               {getPuntajeText(resultado.puntaje)}
             </Title>
           </div>
 
-          <Row gutter={24} style={{ marginBottom: '32px' }}>
-            <Col span={8}>
+          <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+            <Col xs={24} sm={8}>
               <Statistic
                 title="Puntaje"
                 value={resultado.puntaje}
                 suffix="%"
-                valueStyle={{ color: getPuntajeColor(resultado.puntaje), fontSize: '32px' }}
+                valueStyle={{ color: getPuntajeColor(resultado.puntaje), fontSize: '24px' }}
               />
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={8}>
               <Statistic
                 title="Correctas"
                 value={resultado.correctas}
                 suffix={`/ ${resultado.total}`}
-                valueStyle={{ fontSize: '32px' }}
+                valueStyle={{ fontSize: '24px' }}
               />
             </Col>
-            <Col span={8}>
+            <Col xs={24} sm={8}>
               <Statistic
                 title="Tiempo"
                 value={resultado.tiempoTotal}
                 suffix="seg"
-                valueStyle={{ fontSize: '32px' }}
+                valueStyle={{ fontSize: '24px' }}
               />
             </Col>
           </Row>
 
-          <Space size="large" style={{ marginTop: '32px' }}>
+          <Space direction="vertical" size="middle" style={{ width: '100%' }}>
             <Button 
               size="large" 
               icon={<ArrowLeftOutlined />}
               onClick={() => navigate('/espanol/examenes')}
+              style={{ width: '100%', maxWidth: '300px' }}
             >
               Volver a Exámenes
             </Button>
@@ -206,6 +207,7 @@ const QuizEspanol: React.FC = () => {
               size="large"
               icon={<ReloadOutlined />}
               onClick={handleRetakeQuiz}
+              style={{ width: '100%', maxWidth: '300px' }}
             >
               Repetir Examen
             </Button>
@@ -213,6 +215,7 @@ const QuizEspanol: React.FC = () => {
               type="default" 
               size="large"
               onClick={() => navigate('/resultado')}
+              style={{ width: '100%', maxWidth: '300px' }}
             >
               Ver Detalles
             </Button>
@@ -223,35 +226,36 @@ const QuizEspanol: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ padding: '16px', maxWidth: '800px', margin: '0 auto' }}>
       {/* Header del examen */}
-      <Card style={{ marginBottom: '24px' }}>
+      <Card style={{ marginBottom: '16px' }}>
         <div style={{ textAlign: 'center' }}>
-          <Title level={2} style={{ color: '#52c41a', margin: 0 }}>
+          <Title level={2} style={{ color: '#52c41a', margin: 0, fontSize: '24px' }}>
             Examen: {tema.nombre}
           </Title>
-          <Paragraph style={{ fontSize: '16px', margin: '8px 0 0 0', color: '#666' }}>
+          <Paragraph style={{ fontSize: '14px', margin: '8px 0 0 0', color: '#666' }}>
             {tema.descripcion}
           </Paragraph>
         </div>
       </Card>
 
       {/* Barra de progreso */}
-      <Card style={{ marginBottom: '24px' }}>
-        <Row gutter={24} align="middle">
-          <Col span={16}>
+      <Card style={{ marginBottom: '16px' }}>
+        <Row gutter={[16, 16]} align="middle">
+          <Col xs={24} sm={16}>
             <Progress 
               percent={progressPercentage} 
               format={() => `${quizState.currentQuestion + 1} de ${preguntas.length}`}
               strokeColor="#52c41a"
             />
           </Col>
-          <Col span={8} style={{ textAlign: 'right' }}>
+          <Col xs={24} sm={8} style={{ textAlign: 'center' }}>
             <Statistic
               title="Tiempo"
               value={Math.round((Date.now() - quizState.tiempoInicio) / 1000)}
               suffix="seg"
               prefix={<ClockCircleOutlined />}
+              valueStyle={{ fontSize: '18px' }}
             />
           </Col>
         </Row>
@@ -259,11 +263,11 @@ const QuizEspanol: React.FC = () => {
 
       {/* Pregunta actual */}
       <Card>
-        <div style={{ marginBottom: '24px' }}>
-          <Title level={4}>
+        <div style={{ marginBottom: '20px' }}>
+          <Title level={4} style={{ fontSize: '18px' }}>
             Pregunta {quizState.currentQuestion + 1} de {preguntas.length}
           </Title>
-          <Paragraph style={{ fontSize: '18px', lineHeight: '1.6' }}>
+          <Paragraph style={{ fontSize: '16px', lineHeight: '1.6' }}>
             {currentQuestion.pregunta}
           </Paragraph>
         </div>
@@ -274,7 +278,7 @@ const QuizEspanol: React.FC = () => {
           onChange={(e) => handleAnswerSelect(e.target.value)}
           style={{ width: '100%' }}
         >
-          <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+          <Space direction="vertical" size="small" style={{ width: '100%' }}>
             {currentQuestion.opciones.map((opcion: string, index: number) => (
               <Radio.Button
                 key={index}
@@ -300,11 +304,12 @@ const QuizEspanol: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '14px',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    flexShrink: 0
                   }}>
                     {String.fromCharCode(65 + index)}
                   </span>
-                  {opcion}
+                  <span style={{ wordBreak: 'break-word' }}>{opcion}</span>
                 </Space>
               </Radio.Button>
             ))}
@@ -312,12 +317,13 @@ const QuizEspanol: React.FC = () => {
         </Radio.Group>
 
         {/* Navegación */}
-        <div style={{ marginTop: '32px', textAlign: 'center' }}>
-          <Space size="large">
+        <div style={{ marginTop: '24px', textAlign: 'center' }}>
+          <Space direction="vertical" size="middle" style={{ width: '100%' }}>
             <Button 
               size="large" 
               disabled={quizState.currentQuestion === 0}
               onClick={handlePreviousQuestion}
+              style={{ width: '100%', maxWidth: '200px' }}
             >
               Anterior
             </Button>
@@ -328,6 +334,7 @@ const QuizEspanol: React.FC = () => {
                 size="large"
                 disabled={quizState.respuestas[quizState.currentQuestion] === -1}
                 onClick={handleNextQuestion}
+                style={{ width: '100%', maxWidth: '300px' }}
               >
                 Siguiente
               </Button>
@@ -338,6 +345,7 @@ const QuizEspanol: React.FC = () => {
                 icon={<TrophyOutlined />}
                 disabled={quizState.respuestas.some(r => r === -1)}
                 onClick={handleFinishQuiz}
+                style={{ width: '100%', maxWidth: '300px' }}
               >
                 Finalizar Examen
               </Button>
@@ -357,39 +365,43 @@ const QuizEspanol: React.FC = () => {
       </Card>
 
       {/* Información del examen */}
-      <Card style={{ marginTop: '24px' }}>
-        <Row gutter={24}>
-          <Col span={8}>
+      <Card style={{ marginTop: '16px' }}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={8}>
             <Statistic
               title="Preguntas"
               value={preguntas.length}
               prefix={<FileTextOutlined />}
+              valueStyle={{ fontSize: '18px' }}
             />
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <Statistic
               title="Respondidas"
               value={quizState.respuestas.filter(r => r !== -1).length}
               suffix={`/ ${preguntas.length}`}
               prefix={<CheckCircleOutlined />}
+              valueStyle={{ fontSize: '18px' }}
             />
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <Statistic
               title="Restantes"
               value={preguntas.length - quizState.respuestas.filter(r => r !== -1).length}
               prefix={<ClockCircleOutlined />}
+              valueStyle={{ fontSize: '18px' }}
             />
           </Col>
         </Row>
       </Card>
 
       {/* Botones de acción */}
-      <div style={{ textAlign: 'center', marginTop: '24px' }}>
-        <Space size="large">
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <Button 
             size="large" 
             onClick={() => navigate('/espanol/examenes')}
+            style={{ width: '100%', maxWidth: '300px' }}
           >
             Cancelar Examen
           </Button>
@@ -404,7 +416,9 @@ const QuizEspanol: React.FC = () => {
             style={{
               background: '#f5222d',
               borderColor: '#f5222d',
-              boxShadow: '0 2px 8px rgba(245, 34, 45, 0.3)'
+              boxShadow: '0 2px 8px rgba(245, 34, 45, 0.3)',
+              width: '100%',
+              maxWidth: '300px'
             }}
           >
             SOS - ¡Necesito Ayuda!

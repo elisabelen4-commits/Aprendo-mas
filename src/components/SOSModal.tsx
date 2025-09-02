@@ -426,11 +426,13 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
       open={visible}
       onCancel={onClose}
       footer={null}
-      width={800}
+      width="95%"
+      style={{ maxWidth: '800px' }}
       centered
+      destroyOnClose
     >
       {/* Barra de progreso */}
-      <div style={{ marginBottom: '24px' }}>
+      <div style={{ marginBottom: '20px' }}>
         <Progress 
           percent={(currentStep / 3) * 100} 
           format={() => `Paso ${currentStep} de 3`}
@@ -440,25 +442,27 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
       </div>
 
       {/* Paso actual */}
-      <Card style={{ marginBottom: '24px' }}>
-        <Row gutter={24} align="middle">
-          <Col span={8}>
+      <Card style={{ marginBottom: '20px' }}>
+        <Row gutter={[16, 16]} align="middle">
+          <Col xs={24} sm={8} style={{ textAlign: 'center' }}>
             <div 
               dangerouslySetInnerHTML={{ __html: currentStepData.svgIcon }}
               style={{ textAlign: 'center' }}
             />
           </Col>
-          <Col span={16}>
-            <Title level={4} style={{ marginBottom: '8px' }}>
+          <Col xs={24} sm={16}>
+            <Title level={4} style={{ marginBottom: '8px', fontSize: '18px' }}>
               {currentStepData.titulo}
             </Title>
-            <Paragraph style={{ marginBottom: '16px' }}>
+            <Paragraph style={{ marginBottom: '16px', fontSize: '14px' }}>
               {currentStepData.ejemplo}
             </Paragraph>
             <Button 
               type="primary" 
               icon={<PlayCircleOutlined />}
               onClick={() => speak(`${currentStepData.titulo}. ${currentStepData.ejemplo}`)}
+              size="middle"
+              style={{ width: '100%', maxWidth: '200px' }}
             >
               Escuchar
             </Button>
@@ -467,7 +471,7 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
       </Card>
 
       {/* Mini-pregunta */}
-      <Card title="Mini-Pregunta de Verificación" style={{ marginBottom: '24px' }}>
+      <Card title="Mini-Pregunta de Verificación" style={{ marginBottom: '20px' }}>
         <Paragraph style={{ fontSize: '16px', marginBottom: '16px' }}>
           {currentStepData.miniPregunta.pregunta}
         </Paragraph>
@@ -477,7 +481,7 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
           onChange={(e) => setRespuestaSeleccionada(e.target.value)}
           style={{ width: '100%' }}
         >
-          <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+          <Space direction="vertical" size="small" style={{ width: '100%' }}>
             {currentStepData.miniPregunta.opciones.map((opcion, index) => (
               <Radio.Button
                 key={index}
@@ -485,9 +489,11 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
                 style={{
                   width: '100%',
                   height: 'auto',
-                  padding: '12px',
+                  padding: '12px 16px',
                   textAlign: 'left',
-                  fontSize: '14px'
+                  fontSize: '14px',
+                  borderRadius: '8px',
+                  border: respuestaSeleccionada === index ? '2px solid #52c41a' : '1px solid #d9d9d9'
                 }}
               >
                 {opcion}
@@ -501,6 +507,8 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
             type="primary"
             disabled={respuestaSeleccionada === -1}
             onClick={handleMiniPregunta}
+            size="large"
+            style={{ width: '100%', maxWidth: '300px' }}
           >
             Verificar Respuesta
           </Button>
@@ -533,9 +541,10 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
                   </Space>
                   <Text>{pistaActual}</Text>
                   <Button 
-                    size="small" 
+                    size="middle" 
                     type="default"
                     onClick={mostrarSiguientePista}
+                    style={{ width: '100%', maxWidth: '200px' }}
                   >
                     Siguiente Pista
                   </Button>
@@ -550,8 +559,12 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
 
       {/* Navegación */}
       <div style={{ textAlign: 'center' }}>
-        <Space size="large">
-          <Button onClick={reiniciar}>
+        <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+          <Button 
+            onClick={reiniciar}
+            size="large"
+            style={{ width: '100%', maxWidth: '200px' }}
+          >
             Reiniciar
           </Button>
           
@@ -559,6 +572,8 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
             <Button 
               type="primary"
               onClick={siguientePaso}
+              size="large"
+              style={{ width: '100%', maxWidth: '300px' }}
             >
               {currentStep < 3 ? 'Siguiente Paso' : 'Completar'}
             </Button>
@@ -566,6 +581,8 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
             <Button 
               type="default"
               disabled={!stepCompleted}
+              size="large"
+              style={{ width: '100%', maxWidth: '300px' }}
             >
               {currentStep < 3 ? 'Siguiente Paso' : 'Completar'}
             </Button>
