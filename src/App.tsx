@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login';
 import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
+import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import ModuloMatematicas from './pages/ModuloMatematicas';
@@ -243,6 +244,7 @@ function App(): React.ReactElement {
             <Route path="*" element={<Home />} />
           </Routes>
         </Content>
+        <WhatsAppFloatingButton />
       </Layout>
     </Router>
   );
