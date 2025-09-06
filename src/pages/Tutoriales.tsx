@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Card, Typography, Space, Row, Col, Button, Tag, Progress } from 'antd';
 import { PlayCircleOutlined, ClockCircleOutlined, BookOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { getContentByGrade } from '../data/gradeContent';
@@ -15,7 +15,12 @@ interface VideoProgress {
 
 const Tutoriales: React.FC = () => {
   const navigate = useNavigate();
-  const { moduloId = 'matematicas', temaId } = useParams<{ moduloId: string; temaId?: string }>();
+  const location = useLocation();
+  const { temaId } = useParams<{ temaId?: string }>();
+  
+  // Extraer moduloId de la URL
+  const pathSegments = location.pathname.split('/');
+  const moduloId = pathSegments[1] || 'matematicas';
   const [videoProgress, setVideoProgress] = useState<VideoProgress>({});
   const { getGrade, getGradeName } = useGrade();
   const userGrade = getGrade();

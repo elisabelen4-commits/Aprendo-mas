@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Card, Typography, Space, Row, Col, Button, Tag, Statistic } from 'antd';
 import { 
   FileTextOutlined, 
@@ -17,7 +17,11 @@ const { Title, Paragraph, Text } = Typography;
 
 const Examenes: React.FC = () => {
   const navigate = useNavigate();
-  const { moduloId = 'matematicas' } = useParams<{ moduloId: string }>();
+  const location = useLocation();
+  
+  // Extraer moduloId de la URL
+  const pathSegments = location.pathname.split('/');
+  const moduloId = pathSegments[1] || 'matematicas';
   const { getGrade, getGradeName } = useGrade();
   const userGrade = getGrade();
 

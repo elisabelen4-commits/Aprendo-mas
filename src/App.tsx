@@ -13,10 +13,8 @@ import ModuloEspanol from './pages/ModuloEspanol';
 import ModuloCienciasSociales from './pages/ModuloCienciasSociales';
 import ModuloComputacion from './pages/ModuloComputacion';
 import Tutoriales from './pages/Tutoriales';
-import VideosTema from './pages/VideosTema';
 import Examenes from './pages/Examenes';
 import Quiz from './pages/Quiz';
-import QuizEspanol from './pages/QuizEspanol';
 import Resultado from './pages/Resultado';
 import './App.css';
 

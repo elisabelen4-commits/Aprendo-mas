@@ -9,7 +9,9 @@ import {
   ArrowLeftOutlined,
   TrophyOutlined
 } from '@ant-design/icons';
-import { matematicasData } from '../data/matematicasData';
+import { getContentByGrade } from '../data/gradeContent';
+import { useGrade } from '../hooks/useGrade';
+import { getModuleName } from '../utils/moduleMapping';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -24,8 +26,16 @@ const VideosTema: React.FC = () => {
   const [videoProgress, setVideoProgress] = useState<VideoProgress>({});
   const [currentVideo, setCurrentVideo] = useState<string>('');
 
-  // Obtener datos del tema
-  const tema = matematicasData.temas.find(t => t.id === temaId);
+  // Extraer moduloId de la URL
+  const pathSegments = location.pathname.split('/');
+  const moduloId = pathSegments[1] || 'matematicas';
+  const { getGrade } = useGrade();
+  const userGrade = getGrade();
+
+  // Obtener datos del tema usando el sistema de gradeContent
+  const moduleName = getModuleName(moduloId);
+  const gradeContent = getContentByGrade(userGrade, moduleName);
+  const tema = gradeContent?.temas.find(t => t.id === temaId);
   const videoId = location.state?.videoId;
 
   useEffect(() => {
@@ -40,7 +50,7 @@ const VideosTema: React.FC = () => {
     return (
       <div style={{ padding: '24px', textAlign: 'center' }}>
         <Title level={2}>Tema no encontrado</Title>
-        <Button onClick={() => navigate('/matematicas/tutoriales')}>
+        <Button onClick={() => navigate(`/${moduloId}/tutoriales`)}>
           Volver a Tutoriales
         </Button>
       </div>
@@ -67,7 +77,7 @@ const VideosTema: React.FC = () => {
   };
 
   const handleExamenClick = () => {
-    navigate(`/matematicas/examenes/${temaId}/quiz`);
+    navigate(`/${moduloId}/examenes/${temaId}/quiz`);
   };
 
   return (
@@ -269,7 +279,7 @@ const VideosTema: React.FC = () => {
           <Button 
             size="large" 
             icon={<ArrowLeftOutlined />}
-            onClick={() => navigate('/matematicas/tutoriales')}
+            onClick={() => navigate(`/${moduloId}/tutoriales`)}
           >
             Volver a Tutoriales
           </Button>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Typography, Space, Button, Row, Col, Divider, Alert } from 'antd';
+import { Card, Typography, Space, Button, Row, Col, Alert } from 'antd';
 import { 
   PlayCircleOutlined, 
-  FileTextOutlined, 
   QuestionCircleOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons';

@@ -732,6 +732,262 @@ export const espanolByGrade: GradeData = {
       }
     ]
   },
+  '2': {
+    temas: [
+      {
+        id: 'comprension-literal-basica',
+        nombre: 'Comprensión literal básica',
+        descripcion: 'Aprende a entender lo que lees literalmente',
+        videos: [
+          {
+            id: 'comprension-1',
+            titulo: 'Entendiendo lo que leo',
+            duracion: '4:30',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende comprensión literal'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es comprensión literal?',
+            opciones: ['Entender lo que dice el texto', 'Inventar historias', 'Dibujar', 'Cantar'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué hace el personaje en la historia?',
+            opciones: ['Lo que dice el texto', 'Lo que yo pienso', 'Lo que me gusta', 'Lo que sueño'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 3,
+            pregunta: '¿Dónde ocurre la historia?',
+            opciones: ['En mi casa', 'Donde dice el texto', 'En la luna', 'En el mar'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 4,
+            pregunta: '¿Cuándo ocurre la historia?',
+            opciones: ['Ayer', 'Cuando dice el texto', 'Mañana', 'Nunca'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Quién es el personaje principal?',
+            opciones: ['Yo', 'El que dice el texto', 'Mi mamá', 'Mi perro'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Lee despacio',
+            explicacion: 'Lee cada palabra despacio para entender mejor.',
+            imagen: 'leer-despacio.svg',
+            audio: 'sos-espanol-2-1.mp3'
+          },
+          {
+            titulo: 'Busca las respuestas',
+            explicacion: 'Busca en el texto las respuestas a las preguntas.',
+            imagen: 'buscar-respuestas.svg',
+            audio: 'sos-espanol-2-2.mp3'
+          },
+          {
+            titulo: 'Subraya lo importante',
+            explicacion: 'Subraya las partes importantes del texto.',
+            imagen: 'subrayar-importante.svg',
+            audio: 'sos-espanol-2-3.mp3'
+          }
+        ],
+        pistas: [
+          ['Lee palabra por palabra', 'No te apresures', 'Entiende cada frase'],
+          ['Mira el texto', 'Busca las palabras clave', 'Encuentra la respuesta'],
+          ['Usa un lápiz', 'Marca lo importante', 'Revisa lo que subrayaste']
+        ],
+        explicacionVoz: 'La comprensión literal es entender exactamente lo que dice el texto, sin inventar o imaginar cosas que no están escritas. Es como ser un detective que busca pistas en las palabras.',
+        audioRadio: [
+          {
+            titulo: 'Comprensión literal',
+            duracion: '1:30',
+            archivo: 'audio-comprension-literal.mp3'
+          },
+          {
+            titulo: 'Buscando respuestas',
+            duracion: '1:45',
+            archivo: 'audio-buscar-respuestas.mp3'
+          }
+        ]
+      },
+      {
+        id: 'clases-palabras-comunes',
+        nombre: 'Clases de palabras comunes',
+        descripcion: 'Aprende sobre sustantivos, verbos y adjetivos',
+        videos: [
+          {
+            id: 'clases-1',
+            titulo: 'Tipos de palabras',
+            duracion: '4:15',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sustantivos, verbos y adjetivos'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es un sustantivo?',
+            opciones: ['Una acción', 'Una persona, lugar o cosa', 'Una cualidad', 'Una pregunta'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué es un verbo?',
+            opciones: ['Una persona', 'Una acción', 'Una cualidad', 'Un lugar'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué es un adjetivo?',
+            opciones: ['Una acción', 'Una persona', 'Una cualidad', 'Un lugar'],
+            respuestaCorrecta: 2
+          },
+          {
+            id: 4,
+            pregunta: '¿Cuál es un sustantivo?',
+            opciones: ['Corre', 'Casa', 'Bonito', 'Rápido'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Cuál es un verbo?',
+            opciones: ['Perro', 'Camina', 'Grande', 'Azul'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Busca sustantivos',
+            explicacion: 'Busca palabras que nombran personas, animales, lugares o cosas.',
+            imagen: 'buscar-sustantivos.svg',
+            audio: 'sos-espanol-2-4.mp3'
+          },
+          {
+            titulo: 'Busca verbos',
+            explicacion: 'Busca palabras que dicen qué hace alguien o algo.',
+            imagen: 'buscar-verbos.svg',
+            audio: 'sos-espanol-2-5.mp3'
+          },
+          {
+            titulo: 'Busca adjetivos',
+            explicacion: 'Busca palabras que describen cómo es algo.',
+            imagen: 'buscar-adjetivos.svg',
+            audio: 'sos-espanol-2-6.mp3'
+          }
+        ],
+        pistas: [
+          ['¿Quién? ¿Qué?', 'Personas, animales, cosas', 'Nombres de lugares'],
+          ['¿Qué hace?', 'Acciones', 'Movimientos'],
+          ['¿Cómo es?', 'Cualidades', 'Características']
+        ],
+        explicacionVoz: 'Las palabras se dividen en clases. Los sustantivos nombran cosas (casa, perro, mamá). Los verbos dicen acciones (corre, come, duerme). Los adjetivos describen cualidades (grande, bonito, rápido).',
+        audioRadio: [
+          {
+            titulo: 'Sustantivos',
+            duracion: '1:30',
+            archivo: 'audio-sustantivos.mp3'
+          },
+          {
+            titulo: 'Verbos y adjetivos',
+            duracion: '1:45',
+            archivo: 'audio-verbos-adjetivos.mp3'
+          }
+        ]
+      },
+      {
+        id: 'mayusculas-punto',
+        nombre: 'Mayúsculas y punto',
+        descripcion: 'Aprende cuándo usar mayúsculas y el punto',
+        videos: [
+          {
+            id: 'mayusculas-1',
+            titulo: 'Mayúsculas y puntuación',
+            duracion: '3:45',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende mayúsculas y punto'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuándo usamos mayúscula?',
+            opciones: ['Al final de la oración', 'Al principio de la oración', 'En el medio', 'Nunca'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Cuándo usamos punto?',
+            opciones: ['Al principio', 'Al final de la oración', 'En el medio', 'Siempre'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué va después del punto?',
+            opciones: ['Minúscula', 'Mayúscula', 'Nada', 'Un espacio'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 4,
+            pregunta: '¿Cuál está bien escrito?',
+            opciones: ['mamá come pan.', 'Mamá come pan.', 'Mamá come pan', 'mamá come pan'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Dónde va el punto?',
+            opciones: ['Antes de la oración', 'Después de la oración', 'En el medio', 'No se usa'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Empieza con mayúscula',
+            explicacion: 'La primera letra de cada oración debe ser mayúscula.',
+            imagen: 'mayuscula-inicio.svg',
+            audio: 'sos-espanol-2-7.mp3'
+          },
+          {
+            titulo: 'Termina con punto',
+            explicacion: 'Cada oración debe terminar con un punto.',
+            imagen: 'punto-final.svg',
+            audio: 'sos-espanol-2-8.mp3'
+          },
+          {
+            titulo: 'Revisa tu escritura',
+            explicacion: 'Lee lo que escribiste y verifica mayúsculas y puntos.',
+            imagen: 'revisar-escritura.svg',
+            audio: 'sos-espanol-2-9.mp3'
+          }
+        ],
+        pistas: [
+          ['Primera letra grande', 'Al empezar oración', 'Nombres propios'],
+          ['Al final de oración', 'Después de la última palabra', 'Antes del espacio'],
+          ['Lee en voz alta', 'Verifica mayúsculas', 'Verifica puntos']
+        ],
+        explicacionVoz: 'Las mayúsculas se usan al principio de cada oración y en nombres propios. El punto se usa al final de cada oración para indicar que terminó. Esto hace que la escritura sea más clara.',
+        audioRadio: [
+          {
+            titulo: 'Mayúsculas',
+            duracion: '1:30',
+            archivo: 'audio-mayusculas.mp3'
+          },
+          {
+            titulo: 'El punto',
+            duracion: '1:45',
+            archivo: 'audio-punto.mp3'
+          }
+        ]
+      }
+    ]
+  },
   '6': {
     temas: [
       {
@@ -1075,6 +1331,262 @@ export const cienciasSocialesByGrade: GradeData = {
             titulo: 'Valores importantes',
             duracion: '1:45',
             archivo: 'audio-valores-convivencia.mp3'
+          }
+        ]
+      }
+    ]
+  },
+  '2': {
+    temas: [
+      {
+        id: 'simbolos-patrios-comunidad',
+        nombre: 'Símbolos patrios y comunidad',
+        descripcion: 'Conoce los símbolos patrios y su importancia en la comunidad',
+        videos: [
+          {
+            id: 'simbolos-1',
+            titulo: 'Símbolos patrios',
+            duracion: '4:30',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sobre los símbolos patrios'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuál es el símbolo patrio más importante?',
+            opciones: ['La bandera', 'El escudo', 'El himno', 'Todos son importantes'],
+            respuestaCorrecta: 3
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué colores tiene la bandera de Honduras?',
+            opciones: ['Rojo, blanco y azul', 'Verde, blanco y rojo', 'Azul y blanco', 'Rojo y amarillo'],
+            respuestaCorrecta: 2
+          },
+          {
+            id: 3,
+            pregunta: '¿Cuándo se canta el himno nacional?',
+            opciones: ['Solo en la escuela', 'En actos oficiales', 'Nunca', 'Solo en casa'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 4,
+            pregunta: '¿Qué representa el escudo nacional?',
+            opciones: ['La historia del país', 'Los recursos naturales', 'La cultura', 'Todo lo anterior'],
+            respuestaCorrecta: 3
+          },
+          {
+            id: 5,
+            pregunta: '¿Por qué son importantes los símbolos patrios?',
+            opciones: ['Son bonitos', 'Representan nuestro país', 'Son obligatorios', 'No son importantes'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Observa la bandera',
+            explicacion: 'Mira los colores y elementos de la bandera nacional.',
+            imagen: 'observar-bandera.svg',
+            audio: 'sos-sociales-2-1.mp3'
+          },
+          {
+            titulo: 'Dibuja el escudo',
+            explicacion: 'Practica dibujando el escudo nacional.',
+            imagen: 'dibujar-escudo.svg',
+            audio: 'sos-sociales-2-2.mp3'
+          },
+          {
+            titulo: 'Canta el himno',
+            explicacion: 'Aprende a cantar el himno nacional con respeto.',
+            imagen: 'cantar-himno.svg',
+            audio: 'sos-sociales-2-3.mp3'
+          }
+        ],
+        pistas: [
+          ['Mira los colores', 'Observa los elementos', 'Cuenta las estrellas'],
+          ['Dibuja paso a paso', 'Usa los colores correctos', 'Practica varias veces'],
+          ['Canta con respeto', 'Párate derecho', 'Mira hacia adelante']
+        ],
+        explicacionVoz: 'Los símbolos patrios representan nuestra identidad como hondureños. La bandera con sus colores azul y blanco, el escudo con elementos históricos, y el himno nacional que cantamos con orgullo.',
+        audioRadio: [
+          {
+            titulo: 'Símbolos patrios',
+            duracion: '1:30',
+            archivo: 'audio-simbolos-patrios.mp3'
+          },
+          {
+            titulo: 'Himno nacional',
+            duracion: '1:45',
+            archivo: 'audio-himno-nacional.mp3'
+          }
+        ]
+      },
+      {
+        id: 'servicios-publicos',
+        nombre: 'Servicios públicos',
+        descripcion: 'Conoce los servicios públicos y su importancia en la comunidad',
+        videos: [
+          {
+            id: 'servicios-1',
+            titulo: 'Servicios públicos',
+            duracion: '4:15',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sobre servicios públicos'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es un servicio público?',
+            opciones: ['Un negocio privado', 'Un servicio para todos', 'Una tienda', 'Un restaurante'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Cuál es un servicio público?',
+            opciones: ['Una tienda', 'Un hospital', 'Un restaurante', 'Una casa'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Para qué sirve la escuela?',
+            opciones: ['Para jugar', 'Para aprender', 'Para dormir', 'Para comer'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 4,
+            pregunta: '¿Para qué sirve el hospital?',
+            opciones: ['Para estudiar', 'Para curar enfermos', 'Para jugar', 'Para comprar'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Quién paga los servicios públicos?',
+            opciones: ['Solo los ricos', 'Todos los ciudadanos', 'Solo los niños', 'Nadie'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Identifica servicios públicos',
+            explicacion: 'Busca en tu comunidad: escuela, hospital, policía, bomberos.',
+            imagen: 'identificar-servicios.svg',
+            audio: 'sos-sociales-2-4.mp3'
+          },
+          {
+            titulo: 'Dibuja tu comunidad',
+            explicacion: 'Dibuja los servicios públicos que hay en tu comunidad.',
+            imagen: 'dibujar-comunidad.svg',
+            audio: 'sos-sociales-2-5.mp3'
+          },
+          {
+            titulo: 'Visita un servicio público',
+            explicacion: 'Pide a tus padres que te lleven a conocer un servicio público.',
+            imagen: 'visitar-servicio.svg',
+            audio: 'sos-sociales-2-6.mp3'
+          }
+        ],
+        pistas: [
+          ['Busca edificios grandes', 'Mira las señales', 'Pregunta a tus padres'],
+          ['Dibuja la escuela', 'Dibuja el hospital', 'Dibuja la policía'],
+          ['Pide permiso', 'Ve con un adulto', 'Observa y aprende']
+        ],
+        explicacionVoz: 'Los servicios públicos son lugares que sirven a toda la comunidad. La escuela nos enseña, el hospital nos cura, la policía nos protege, y los bomberos nos ayudan en emergencias.',
+        audioRadio: [
+          {
+            titulo: 'Servicios públicos',
+            duracion: '1:30',
+            archivo: 'audio-servicios-publicos.mp3'
+          },
+          {
+            titulo: 'Mi comunidad',
+            duracion: '1:45',
+            archivo: 'audio-mi-comunidad.mp3'
+          }
+        ]
+      },
+      {
+        id: 'mapa-simple-honduras',
+        nombre: 'Mapa simple de Honduras',
+        descripcion: 'Aprende a ubicar Honduras en el mapa y sus características básicas',
+        videos: [
+          {
+            id: 'mapa-1',
+            titulo: 'Mapa de Honduras',
+            duracion: '3:45',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sobre el mapa de Honduras'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Dónde está Honduras?',
+            opciones: ['En Europa', 'En América Central', 'En África', 'En Asia'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué países están cerca de Honduras?',
+            opciones: ['México y Brasil', 'Guatemala y El Salvador', 'Colombia y Venezuela', 'Cuba y Jamaica'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué océanos rodean Honduras?',
+            opciones: ['Pacífico y Atlántico', 'Solo Pacífico', 'Solo Atlántico', 'Ninguno'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 4,
+            pregunta: '¿Cuál es la capital de Honduras?',
+            opciones: ['San Pedro Sula', 'Tegucigalpa', 'La Ceiba', 'Choloma'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Qué forma tiene Honduras?',
+            opciones: ['Redonda', 'Cuadrada', 'Alargada', 'Triangular'],
+            respuestaCorrecta: 2
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Mira el mapa',
+            explicacion: 'Observa la forma de Honduras en el mapa.',
+            imagen: 'mirar-mapa.svg',
+            audio: 'sos-sociales-2-7.mp3'
+          },
+          {
+            titulo: 'Dibuja Honduras',
+            explicacion: 'Practica dibujando la forma de Honduras.',
+            imagen: 'dibujar-honduras.svg',
+            audio: 'sos-sociales-2-8.mp3'
+          },
+          {
+            titulo: 'Ubica la capital',
+            explicacion: 'Encuentra Tegucigalpa en el mapa de Honduras.',
+            imagen: 'ubicar-capital.svg',
+            audio: 'sos-sociales-2-9.mp3'
+          }
+        ],
+        pistas: [
+          ['Mira la forma', 'Observa los bordes', 'Compara con otros países'],
+          ['Dibuja la forma', 'Usa líneas suaves', 'Practica varias veces'],
+          ['Busca en el centro', 'Mira las ciudades grandes', 'Pregunta si no encuentras']
+        ],
+        explicacionVoz: 'Honduras está en América Central, entre Guatemala y El Salvador. Tiene forma alargada y está rodeada por el Océano Pacífico y el Mar Caribe. Su capital es Tegucigalpa.',
+        audioRadio: [
+          {
+            titulo: 'Mapa de Honduras',
+            duracion: '1:30',
+            archivo: 'audio-mapa-honduras.mp3'
+          },
+          {
+            titulo: 'Ubicación geográfica',
+            duracion: '1:45',
+            archivo: 'audio-ubicacion-geografica.mp3'
           }
         ]
       }
@@ -1428,6 +1940,262 @@ export const computacionByGrade: GradeData = {
       }
     ]
   },
+  '2': {
+    temas: [
+      {
+        id: 'teclear-oraciones',
+        nombre: 'Teclear oraciones',
+        descripcion: 'Aprende a escribir oraciones completas en el teclado',
+        videos: [
+          {
+            id: 'teclear-1',
+            titulo: 'Escribiendo oraciones',
+            duracion: '4:30',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende a teclear oraciones'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es una oración?',
+            opciones: ['Una palabra', 'Un grupo de palabras', 'Una letra', 'Un número'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Cómo empieza una oración?',
+            opciones: ['Con minúscula', 'Con mayúscula', 'Con número', 'Con símbolo'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Cómo termina una oración?',
+            opciones: ['Con punto', 'Con coma', 'Con espacio', 'Sin nada'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 4,
+            pregunta: '¿Qué tecla usas para hacer mayúscula?',
+            opciones: ['Enter', 'Shift', 'Espacio', 'Tab'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Qué tecla usas para hacer espacio?',
+            opciones: ['Enter', 'Shift', 'Espacio', 'Tab'],
+            respuestaCorrecta: 2
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Empieza con mayúscula',
+            explicacion: 'Presiona Shift y la primera letra para hacer mayúscula.',
+            imagen: 'mayuscula-teclado.svg',
+            audio: 'sos-computacion-2-1.mp3'
+          },
+          {
+            titulo: 'Escribe palabra por palabra',
+            explicacion: 'Escribe cada palabra y presiona espacio entre ellas.',
+            imagen: 'escribir-palabras.svg',
+            audio: 'sos-computacion-2-2.mp3'
+          },
+          {
+            titulo: 'Termina con punto',
+            explicacion: 'Al final de la oración, presiona el punto.',
+            imagen: 'terminar-punto.svg',
+            audio: 'sos-computacion-2-3.mp3'
+          }
+        ],
+        pistas: [
+          ['Presiona Shift + letra', 'Mantén presionado Shift', 'Suelta y escribe'],
+          ['Escribe una palabra', 'Presiona espacio', 'Escribe la siguiente'],
+          ['Busca el punto', 'Presiona el punto', 'Termina la oración']
+        ],
+        explicacionVoz: 'Para escribir una oración en el teclado, empieza con mayúscula usando Shift, escribe cada palabra separada por espacios, y termina con un punto.',
+        audioRadio: [
+          {
+            titulo: 'Escribiendo oraciones',
+            duracion: '1:30',
+            archivo: 'audio-escribir-oraciones.mp3'
+          },
+          {
+            titulo: 'Uso del teclado',
+            duracion: '1:45',
+            archivo: 'audio-uso-teclado.mp3'
+          }
+        ]
+      },
+      {
+        id: 'guardar-abrir-archivos',
+        nombre: 'Guardar y abrir archivos',
+        descripcion: 'Aprende a guardar y abrir archivos en la computadora',
+        videos: [
+          {
+            id: 'archivos-1',
+            titulo: 'Guardar y abrir archivos',
+            duracion: '4:15',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sobre archivos'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es un archivo?',
+            opciones: ['Una carpeta', 'Un documento guardado', 'Un programa', 'Una imagen'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Para qué sirve guardar un archivo?',
+            opciones: ['Para perderlo', 'Para conservarlo', 'Para borrarlo', 'Para olvidarlo'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué tecla usas para guardar?',
+            opciones: ['Ctrl + S', 'Ctrl + A', 'Ctrl + C', 'Ctrl + V'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 4,
+            pregunta: '¿Dónde se guardan los archivos?',
+            opciones: ['En el teclado', 'En la pantalla', 'En el disco duro', 'En el mouse'],
+            respuestaCorrecta: 2
+          },
+          {
+            id: 5,
+            pregunta: '¿Qué necesitas para abrir un archivo?',
+            opciones: ['El nombre del archivo', 'La ubicación', 'Ambos', 'Nada'],
+            respuestaCorrecta: 2
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Guarda tu trabajo',
+            explicacion: 'Presiona Ctrl + S para guardar tu documento.',
+            imagen: 'guardar-documento.svg',
+            audio: 'sos-computacion-2-4.mp3'
+          },
+          {
+            titulo: 'Dale un nombre',
+            explicacion: 'Escribe un nombre para tu archivo antes de guardarlo.',
+            imagen: 'nombre-archivo.svg',
+            audio: 'sos-computacion-2-5.mp3'
+          },
+          {
+            titulo: 'Abre el archivo',
+            explicacion: 'Busca el archivo en la carpeta y haz doble clic para abrirlo.',
+            imagen: 'abrir-archivo.svg',
+            audio: 'sos-computacion-2-6.mp3'
+          }
+        ],
+        pistas: [
+          ['Presiona Ctrl + S', 'Mantén presionado Ctrl', 'Presiona S'],
+          ['Escribe un nombre claro', 'Usa palabras que recuerdes', 'No uses símbolos raros'],
+          ['Busca en la carpeta', 'Haz doble clic', 'Espera a que se abra']
+        ],
+        explicacionVoz: 'Los archivos son documentos que guardamos en la computadora. Para guardar presionamos Ctrl + S, le damos un nombre, y para abrirlos buscamos en la carpeta y hacemos doble clic.',
+        audioRadio: [
+          {
+            titulo: 'Guardar archivos',
+            duracion: '1:30',
+            archivo: 'audio-guardar-archivos.mp3'
+          },
+          {
+            titulo: 'Abrir archivos',
+            duracion: '1:45',
+            archivo: 'audio-abrir-archivos.mp3'
+          }
+        ]
+      },
+      {
+        id: 'internet-seguro-basico',
+        nombre: 'Internet seguro básico',
+        descripcion: 'Aprende a usar internet de forma segura',
+        videos: [
+          {
+            id: 'internet-1',
+            titulo: 'Internet seguro',
+            duracion: '3:45',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende sobre internet seguro'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es internet?',
+            opciones: ['Una computadora', 'Una red de computadoras', 'Un programa', 'Una pantalla'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Con quién puedes hablar en internet?',
+            opciones: ['Solo con familia', 'Solo con amigos conocidos', 'Con extraños', 'Con cualquiera'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué información NO debes compartir?',
+            opciones: ['Tu nombre', 'Tu dirección', 'Tu edad', 'Todas las anteriores'],
+            respuestaCorrecta: 3
+          },
+          {
+            id: 4,
+            pregunta: '¿Qué debes hacer si ves algo raro en internet?',
+            opciones: ['Ignorarlo', 'Contárselo a un adulto', 'Hacer clic', 'Guardarlo'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 5,
+            pregunta: '¿Cuánto tiempo debes usar internet?',
+            opciones: ['Todo el día', 'Solo un rato', 'Nunca', 'Cuando quieras'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Pide permiso',
+            explicacion: 'Siempre pide permiso a un adulto antes de usar internet.',
+            imagen: 'pedir-permiso.svg',
+            audio: 'sos-computacion-2-7.mp3'
+          },
+          {
+            titulo: 'No hables con extraños',
+            explicacion: 'Solo habla con personas que conoces en la vida real.',
+            imagen: 'no-extraños.svg',
+            audio: 'sos-computacion-2-8.mp3'
+          },
+          {
+            titulo: 'Cuenta si algo te molesta',
+            explicacion: 'Si ves algo que te molesta, cuéntaselo a un adulto.',
+            imagen: 'contar-adulto.svg',
+            audio: 'sos-computacion-2-9.mp3'
+          }
+        ],
+        pistas: [
+          ['Pide permiso primero', 'Espera la respuesta', 'Solo si te dan permiso'],
+          ['Solo con familia', 'Solo con amigos conocidos', 'Nunca con extraños'],
+          ['Habla con tus padres', 'Habla con tu maestro', 'No te quedes callado']
+        ],
+        explicacionVoz: 'Internet es una herramienta útil pero debemos usarla con cuidado. Siempre pide permiso a un adulto, no hables con extraños, y si ves algo que te molesta, cuéntaselo a un adulto de confianza.',
+        audioRadio: [
+          {
+            titulo: 'Internet seguro',
+            duracion: '1:30',
+            archivo: 'audio-internet-seguro.mp3'
+          },
+          {
+            titulo: 'Reglas de seguridad',
+            duracion: '1:45',
+            archivo: 'audio-reglas-seguridad-internet.mp3'
+          }
+        ]
+      }
+    ]
+  },
   '6': {
     temas: [
       {
@@ -1527,5 +2295,34 @@ export const getContentByGrade = (grade: string, module: 'matematicas' | 'espano
     'computacion': computacionByGrade
   };
 
-  return gradeData[module]?.[grade] || null;
+  // Intentar obtener contenido específico para el grado
+  const specificContent = gradeData[module]?.[grade];
+  if (specificContent) {
+    return specificContent;
+  }
+
+  // Sistema de fallback: usar contenido del grado más cercano disponible
+  const availableGrades = Object.keys(gradeData[module] || {});
+  if (availableGrades.length === 0) {
+    return null;
+  }
+
+  // Convertir grados a números para comparación
+  const gradeNum = parseInt(grade);
+  const availableGradeNums = availableGrades.map(g => parseInt(g)).sort((a, b) => a - b);
+
+  // Encontrar el grado más cercano
+  let closestGrade = availableGradeNums[0];
+  let minDistance = Math.abs(gradeNum - closestGrade);
+
+  for (const availableGrade of availableGradeNums) {
+    const distance = Math.abs(gradeNum - availableGrade);
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestGrade = availableGrade;
+    }
+  }
+
+  // Retornar contenido del grado más cercano
+  return gradeData[module]?.[closestGrade.toString()] || null;
 };

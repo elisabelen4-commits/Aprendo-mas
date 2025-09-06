@@ -18,7 +18,6 @@ interface RadioModeAudioProps {
 }
 
 const RadioModeAudio: React.FC<RadioModeAudioProps> = ({
-  temaId,
   moduloId,
   grade,
   audioItems

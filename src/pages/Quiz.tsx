@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { Card, Typography, Space, Button, Progress, Radio, Row, Col, Alert, Statistic } from 'antd';
 import { 
   FileTextOutlined, 
@@ -27,7 +27,12 @@ interface QuizState {
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate();
-  const { temaId, moduloId = 'matematicas' } = useParams<{ temaId: string; moduloId?: string }>();
+  const location = useLocation();
+  const { temaId } = useParams<{ temaId: string }>();
+  
+  // Extraer moduloId de la URL
+  const pathSegments = location.pathname.split('/');
+  const moduloId = pathSegments[1] || 'matematicas';
   const { getGrade } = useGrade();
   const userGrade = getGrade();
   
@@ -271,7 +276,7 @@ const Quiz: React.FC = () => {
             <Button 
               size="large" 
               icon={<ArrowLeftOutlined />}
-              onClick={() => navigate('/matematicas/examenes')}
+              onClick={() => navigate(`/${moduloId}/examenes`)}
               style={{ width: '100%', maxWidth: '300px' }}
             >
               Volver a Exámenes
@@ -474,7 +479,7 @@ const Quiz: React.FC = () => {
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <Button 
             size="large" 
-            onClick={() => navigate('/matematicas/examenes')}
+            onClick={() => navigate(`/${moduloId}/examenes`)}
             style={{ width: '100%', maxWidth: '300px' }}
           >
             Cancelar Examen
