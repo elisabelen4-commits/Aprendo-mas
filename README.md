@@ -6,16 +6,33 @@ Una plataforma educativa moderna construida con **React + TypeScript**, Redux To
 
 ### Sistema de Autenticación
 - **Login/Registro**: Sistema completo de autenticación de usuarios
+- **Selector de Grado**: Obligatorio en registro e inicio (1.º Primaria a 3.º Bachillerato)
 - **Credenciales por defecto**: `admin/123` para acceso inmediato
-- **Persistencia**: Sesiones guardadas en localStorage
+- **Persistencia**: Sesiones y grado guardados en localStorage
 - **Rutas protegidas**: Acceso controlado a módulos educativos
 - **Recuperación de contraseña**: Sistema de forgot password
 
-### Módulos Educativos
-- **Matemáticas**: Módulo activo con tutoriales y exámenes
-- **Español**: Próximamente
-- **Ciencias Sociales**: Próximamente
-- **Tecnología**: Próximamente
+### Módulos Educativos (4 Materias Completas)
+- **Matemáticas**: Contenido adaptado por grado con tutoriales, exámenes y SOS
+- **Español**: Gramática, ortografía y comprensión lectora por grado
+- **Ciencias Sociales**: Historia, geografía y civismo adaptados
+- **Computación**: Programación básica y herramientas digitales
+
+### Contenido Adaptado por Grado
+- **12 Grados**: Desde 1.º Primaria hasta 3.º Bachillerato
+- **Contenido Específico**: Temas, preguntas, explicaciones y audios adaptados
+- **SOS por Tema**: 3 pasos con explicación, imagen y audio corto
+- **Pistas Inteligentes**: 2-3 ayudas por paso en el sistema SOS
+- **Exámenes Personalizados**: 5 preguntas con retroalimentación por grado
+
+### Funcionalidades Avanzadas
+- **Explicar con Voz/IA**: 
+  - Modo offline: Texto-a-voz con resumen explicativo
+  - Modo online: Explicación mejorada con IA adaptada al grado
+  - Persistencia local de explicaciones generadas
+- **Audio Modo Radio**: 1-3 audios cortos (60-90s) por tema para repaso
+- **Sistema SOS Mejorado**: Guía paso a paso con pistas contextuales
+- **Paridad Funcional**: Mismas características en las 4 materias
 
 ### Tecnologías
 - **React 19 + TypeScript** + Vite
@@ -23,6 +40,34 @@ Una plataforma educativa moderna construida con **React + TypeScript**, Redux To
 - **Redux Persist** para persistencia
 - **Ant Design** para UI/UX
 - **React Router** para navegación
+- **Web Speech API** para síntesis de voz
+- **localStorage** para persistencia de datos
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── components/           # Componentes reutilizables
+│   ├── VoiceExplanation.tsx    # Botón "Explicar con voz/IA"
+│   ├── RadioModeAudio.tsx      # Bloque "Audio modo radio"
+│   ├── SOSModal.tsx           # Sistema de ayuda SOS
+│   ├── TemaCompleto.tsx       # Vista completa de tema
+│   └── ...
+├── data/                # Datos y contenido
+│   ├── gradeContent.ts        # Contenido adaptado por grado
+│   └── ...
+├── hooks/               # Hooks personalizados
+│   ├── useGrade.ts            # Hook para manejo de grado
+│   └── ...
+├── pages/               # Páginas principales
+│   ├── Tutoriales.tsx         # Lista de tutoriales por módulo
+│   ├── Quiz.tsx              # Exámenes interactivos
+│   ├── Examenes.tsx          # Lista de exámenes
+│   └── ...
+└── store/               # Estado global
+    ├── authSlice.ts          # Autenticación y usuario
+    └── ...
+```
 
 ## 🛠️ Instalación
 
@@ -51,6 +96,40 @@ npm run build
 ```bash
 npm run type-check
 ```
+
+## 🎯 Uso
+
+### Primeros Pasos
+1. **Registro/Login**: Selecciona tu grado escolar (obligatorio)
+2. **Navegación**: Accede a cualquiera de los 4 módulos desde el dashboard
+3. **Tutoriales**: Ve videos explicativos adaptados a tu grado
+4. **Exámenes**: Practica con 5 preguntas personalizadas por tema
+
+### Funcionalidades Principales
+
+#### 🎤 Explicar con Voz/IA
+- **Modo Offline**: Lee explicaciones con síntesis de voz
+- **Modo Online**: Genera explicaciones mejoradas con IA
+- **Adaptación**: Contenido específico para tu grado escolar
+- **Persistencia**: Las explicaciones se guardan localmente
+
+#### 📻 Audio Modo Radio
+- **Audios Cortos**: 1-3 audios de 60-90 segundos por tema
+- **Repaso Sin Datos**: Funciona completamente offline
+- **Contenido Local**: Archivos de audio almacenados localmente
+- **Fallback Graceful**: Muestra "audio no disponible" si no existe
+
+#### 🆘 Sistema SOS
+- **3 Pasos**: Guía estructurada por tema
+- **Pistas Inteligentes**: 2-3 ayudas por paso
+- **Contenido Adaptado**: Explicaciones específicas por grado
+- **Audio Incluido**: Explicaciones con síntesis de voz
+
+#### 📚 Contenido por Grado
+- **12 Grados**: Desde 1.º Primaria hasta 3.º Bachillerato
+- **Adaptación Automática**: Todo el contenido se ajusta al grado seleccionado
+- **4 Materias**: Matemáticas, Español, Ciencias Sociales, Computación
+- **Paridad Funcional**: Mismas características en todas las materias
 
 ## 🔐 Sistema de Autenticación
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { Form, Input, Button, Card, Typography, Alert, Space } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Card, Typography, Alert, Space, Select } from 'antd';
+import { UserOutlined, LockOutlined, BookOutlined } from '@ant-design/icons';
 import { loginUser, clearError } from '../store/authSlice';
 import { RootState } from '../store/store';
 import { useAppDispatch } from '../hooks/useAppDispatch';
@@ -12,6 +12,7 @@ const { Title, Text } = Typography;
 interface LoginFormValues {
   username: string;
   password: string;
+  grade: string;
 }
 
 const Login: React.FC = () => {
@@ -36,18 +37,21 @@ const Login: React.FC = () => {
   const onFinish = (values: LoginFormValues) => {
     dispatch(loginUser({
       username: values.username,
-      password: values.password
+      password: values.password,
+      grade: values.grade
     }));
   };
 
   const handleDemoLogin = () => {
     form.setFieldsValue({
       username: 'admin',
-      password: '123'
+      password: '123',
+      grade: '6'
     });
     dispatch(loginUser({
       username: 'admin',
-      password: '123'
+      password: '123',
+      grade: '6'
     }));
   };
 
@@ -119,6 +123,33 @@ const Login: React.FC = () => {
               placeholder="Contraseña"
               autoComplete="current-password"
             />
+          </Form.Item>
+
+          <Form.Item
+            name="grade"
+            rules={[
+              { required: true, message: 'Por favor selecciona tu grado!' }
+            ]}
+          >
+            <Select
+              placeholder="Grado que cursa"
+              size="large"
+              suffixIcon={<BookOutlined />}
+              style={{ width: '100%' }}
+            >
+              <Select.Option value="1">1.º Primaria</Select.Option>
+              <Select.Option value="2">2.º Primaria</Select.Option>
+              <Select.Option value="3">3.º Primaria</Select.Option>
+              <Select.Option value="4">4.º Primaria</Select.Option>
+              <Select.Option value="5">5.º Primaria</Select.Option>
+              <Select.Option value="6">6.º Primaria</Select.Option>
+              <Select.Option value="7">1.º Secundaria</Select.Option>
+              <Select.Option value="8">2.º Secundaria</Select.Option>
+              <Select.Option value="9">3.º Secundaria</Select.Option>
+              <Select.Option value="10">1.º Bachillerato</Select.Option>
+              <Select.Option value="11">2.º Bachillerato</Select.Option>
+              <Select.Option value="12">3.º Bachillerato</Select.Option>
+            </Select>
           </Form.Item>
 
           <Form.Item>

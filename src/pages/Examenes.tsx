@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Card, Typography, Space, Row, Col, Button, Tag, Statistic } from 'antd';
 import { 
   FileTextOutlined, 
@@ -9,23 +9,32 @@ import {
   StarOutlined,
   BookOutlined
 } from '@ant-design/icons';
-import { matematicasData, obtenerUltimoResultado } from '../data/matematicasData';
+import { getContentByGrade } from '../data/gradeContent';
+import { useGrade } from '../hooks/useGrade';
+import { getModuleName } from '../utils/moduleMapping';
 
 const { Title, Paragraph, Text } = Typography;
 
 const Examenes: React.FC = () => {
   const navigate = useNavigate();
+  const { moduloId = 'matematicas' } = useParams<{ moduloId: string }>();
+  const { getGrade, getGradeName } = useGrade();
+  const userGrade = getGrade();
 
   const handleExamenClick = (temaId: string) => {
-    navigate(`/matematicas/examenes/${temaId}/quiz`);
+    navigate(`/${moduloId}/examenes/${temaId}/quiz`);
   };
 
   const handleTutorialesClick = () => {
-    navigate('/matematicas/tutoriales');
+    navigate(`/${moduloId}/tutoriales`);
   };
 
   const getTemaStats = (tema: any) => {
-    const ultimoResultado = obtenerUltimoResultado(tema.id);
+    // Obtener último resultado desde localStorage
+    const clave = `score:${moduloId}:${tema.id}`;
+    const datos = localStorage.getItem(clave);
+    const ultimoResultado = datos ? JSON.parse(datos) : null;
+    
     return {
       ultimoPuntaje: ultimoResultado?.puntaje || 0,
       ultimaFecha: ultimoResultado?.timestamp || null,
@@ -48,6 +57,20 @@ const Examenes: React.FC = () => {
     return 'Necesita mejorar';
   };
 
+  // Obtener contenido específico por grado
+  const moduleName = getModuleName(moduloId);
+  const gradeContent = getContentByGrade(userGrade, moduleName);
+
+  if (!gradeContent) {
+    return (
+      <div style={{ padding: '24px', textAlign: 'center' }}>
+        <Title level={3}>Contenido no disponible</Title>
+        <Paragraph>No hay contenido disponible para {getGradeName()} en este módulo.</Paragraph>
+        <Button onClick={() => navigate(-1)}>Volver</Button>
+      </div>
+    );
+  }
+
   return (
     <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Header del módulo */}
@@ -56,10 +79,15 @@ const Examenes: React.FC = () => {
           <FileTextOutlined style={{ fontSize: '64px', color: '#52c41a' }} />
           <div>
             <Title level={1} style={{ color: '#52c41a', margin: 0 }}>
-              Exámenes de Matemáticas
+              Exámenes de {
+                moduloId === 'matematicas' ? 'Matemáticas' :
+                moduloId === 'espanol' ? 'Español' :
+                moduloId === 'ciencias-sociales' ? 'Ciencias Sociales' :
+                'Computación'
+              }
             </Title>
             <Paragraph style={{ fontSize: '18px', margin: '16px 0 0 0', color: '#666' }}>
-              Pon a prueba tus conocimientos con nuestros exámenes interactivos
+              Pon a prueba tus conocimientos con nuestros exámenes interactivos - {getGradeName()}
             </Paragraph>
           </div>
         </Space>
@@ -71,21 +99,21 @@ const Examenes: React.FC = () => {
           <Col xs={12} sm={6}>
             <Statistic
               title="Total de Temas"
-              value={matematicasData.temas.length}
+              value={gradeContent.temas.length}
               prefix={<BookOutlined />}
             />
           </Col>
           <Col xs={12} sm={6}>
             <Statistic
               title="Total de Preguntas"
-              value={matematicasData.temas.reduce((acc, tema) => acc + tema.preguntas.length, 0)}
+              value={gradeContent.temas.reduce((acc, tema) => acc + tema.preguntas.length, 0)}
               prefix={<FileTextOutlined />}
             />
           </Col>
           <Col xs={12} sm={6}>
             <Statistic
               title="Tiempo Estimado"
-              value={Math.ceil(matematicasData.temas.reduce((acc, tema) => acc + tema.preguntas.length, 0) * 1.5)}
+              value={Math.ceil(gradeContent.temas.reduce((acc, tema) => acc + tema.preguntas.length, 0) * 1.5)}
               suffix="min"
               prefix={<ClockCircleOutlined />}
             />
@@ -93,7 +121,7 @@ const Examenes: React.FC = () => {
           <Col xs={12} sm={6}>
             <Statistic
               title="Exámenes Disponibles"
-              value={matematicasData.temas.length}
+              value={gradeContent.temas.length}
               prefix={<TrophyOutlined />}
             />
           </Col>
@@ -102,9 +130,8 @@ const Examenes: React.FC = () => {
 
       {/* Temas disponibles */}
       <Row gutter={[24, 24]}>
-        {matematicasData.temas.map((tema) => {
+        {gradeContent.temas.map((tema) => {
           const stats = getTemaStats(tema);
-          const ultimoResultado = obtenerUltimoResultado(tema.id);
           
           return (
             <Col xs={24} md={12} lg={8} key={tema.id}>
@@ -160,7 +187,7 @@ const Examenes: React.FC = () => {
                 </div>
 
                 {/* Último resultado */}
-                {ultimoResultado && (
+                {stats.ultimaFecha && (
                   <div style={{ marginBottom: '20px', textAlign: 'center' }}>
                     <Title level={5}>Último Resultado:</Title>
                     <div style={{
@@ -170,19 +197,19 @@ const Examenes: React.FC = () => {
                       border: '1px solid #b7eb8f'
                     }}>
                       <Statistic
-                        value={ultimoResultado.puntaje}
+                        value={stats.ultimoPuntaje}
                         suffix="%"
                         valueStyle={{ 
-                          color: getPuntajeColor(ultimoResultado.puntaje),
+                          color: getPuntajeColor(stats.ultimoPuntaje),
                           fontSize: '24px'
                         }}
                       />
-                      <Tag color={getPuntajeColor(ultimoResultado.puntaje)}>
-                        {getPuntajeText(ultimoResultado.puntaje)}
+                      <Tag color={getPuntajeColor(stats.ultimoPuntaje)}>
+                        {getPuntajeText(stats.ultimoPuntaje)}
                       </Tag>
                       <div style={{ marginTop: '8px' }}>
                         <Text type="secondary" style={{ fontSize: '12px' }}>
-                          {new Date(ultimoResultado.timestamp).toLocaleDateString()}
+                          {new Date(stats.ultimaFecha).toLocaleDateString()}
                         </Text>
                       </div>
                     </div>
@@ -204,7 +231,7 @@ const Examenes: React.FC = () => {
                         borderColor: '#52c41a'
                       }}
                     >
-                      {ultimoResultado ? 'Repetir Examen' : 'Comenzar Examen'}
+                      {stats.ultimaFecha ? 'Repetir Examen' : 'Comenzar Examen'}
                     </Button>
                     
                     <Button
@@ -266,7 +293,7 @@ const Examenes: React.FC = () => {
         <Space size="large">
           <Button 
             size="large" 
-            onClick={() => navigate('/matematicas')}
+            onClick={() => navigate(`/${moduloId}`)}
           >
             Volver al Módulo
           </Button>

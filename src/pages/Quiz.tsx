@@ -10,7 +10,9 @@ import {
   ReloadOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons';
-import { matematicasData, obtenerPreguntasAleatorias, calcularPuntaje, guardarResultado } from '../data/matematicasData';
+import { getContentByGrade } from '../data/gradeContent';
+import { useGrade } from '../hooks/useGrade';
+import { getModuleName } from '../utils/moduleMapping';
 import SOSModal from '../components/SOSModal';
 
 const { Title, Paragraph } = Typography;
@@ -25,7 +27,9 @@ interface QuizState {
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate();
-  const { temaId } = useParams<{ temaId: string }>();
+  const { temaId, moduloId = 'matematicas' } = useParams<{ temaId: string; moduloId?: string }>();
+  const { getGrade } = useGrade();
+  const userGrade = getGrade();
   
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestion: 0,
@@ -41,17 +45,26 @@ const Quiz: React.FC = () => {
 
   useEffect(() => {
     if (temaId) {
-      const tema = matematicasData.temas.find(t => t.id === temaId);
-      if (tema) {
-        const preguntasAleatorias = obtenerPreguntasAleatorias(temaId, 5);
-        setPreguntas(preguntasAleatorias);
-        setQuizState(prev => ({
-          ...prev,
-          respuestas: new Array(preguntasAleatorias.length).fill(-1)
-        }));
+      // Obtener contenido específico por grado
+      const moduleName = getModuleName(moduloId);
+      const gradeContent = getContentByGrade(userGrade, moduleName);
+      if (gradeContent) {
+        const tema = gradeContent.temas.find(t => t.id === temaId);
+        if (tema && tema.preguntas) {
+          // Seleccionar 5 preguntas aleatorias
+          const preguntasAleatorias = [...tema.preguntas]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 5);
+          
+          setPreguntas(preguntasAleatorias);
+          setQuizState(prev => ({
+            ...prev,
+            respuestas: new Array(preguntasAleatorias.length).fill(-1)
+          }));
+        }
       }
     }
-  }, [temaId]);
+  }, [temaId, userGrade, moduloId]);
 
   useEffect(() => {
     if (quizState.isCompleted) {
@@ -64,14 +77,17 @@ const Quiz: React.FC = () => {
     return (
       <div style={{ padding: '16px', textAlign: 'center' }}>
         <Title level={2} style={{ fontSize: '24px' }}>Tema no encontrado</Title>
-        <Button onClick={() => navigate('/matematicas/examenes')}>
+        <Button onClick={() => navigate(`/${moduloId}/examenes`)}>
           Volver a Exámenes
         </Button>
       </div>
     );
   }
 
-  const tema = matematicasData.temas.find(t => t.id === temaId)!;
+  // Obtener información del tema
+  const moduleName = getModuleName(moduloId);
+  const gradeContent = getContentByGrade(userGrade, moduleName);
+  const tema = gradeContent?.temas.find(t => t.id === temaId);
   const currentQuestion = preguntas[quizState.currentQuestion];
   const progressPercentage = ((quizState.currentQuestion + 1) / preguntas.length) * 100;
 
@@ -93,14 +109,37 @@ const Quiz: React.FC = () => {
       }));
     } else {
       // Examen completado
-      const puntaje = calcularPuntaje(quizState.respuestas, preguntas);
+      let correctas = 0;
+      quizState.respuestas.forEach((respuesta, index) => {
+        if (respuesta === preguntas[index].respuestaCorrecta) {
+          correctas++;
+        }
+      });
+      
+      const puntaje = {
+        correctas,
+        total: preguntas.length,
+        puntaje: Math.round((correctas / preguntas.length) * 100)
+      };
+      
       const resultadoFinal = {
         ...puntaje,
         tiempoTotal: Math.round((Date.now() - quizState.tiempoInicio) / 1000),
         fecha: new Date().toISOString()
       };
       
-      guardarResultado(temaId, puntaje);
+      // Guardar resultado en localStorage
+      if (temaId) {
+        const clave = `score:${moduloId}:${temaId}`;
+        const datos = {
+          ...puntaje,
+          timestamp: new Date().toISOString(),
+          temaId,
+          grade: userGrade
+        };
+        localStorage.setItem(clave, JSON.stringify(datos));
+      }
+      
       setResultado(resultadoFinal);
       setQuizState(prev => ({ ...prev, isCompleted: true }));
     }
@@ -116,29 +155,64 @@ const Quiz: React.FC = () => {
   };
 
   const handleFinishQuiz = () => {
-    const puntaje = calcularPuntaje(quizState.respuestas, preguntas);
+    // Calcular puntaje
+    let correctas = 0;
+    quizState.respuestas.forEach((respuesta, index) => {
+      if (respuesta === preguntas[index].respuestaCorrecta) {
+        correctas++;
+      }
+    });
+    
+    const puntaje = {
+      correctas,
+      total: preguntas.length,
+      puntaje: Math.round((correctas / preguntas.length) * 100)
+    };
+    
     const resultadoFinal = {
       ...puntaje,
       tiempoTotal: Math.round((Date.now() - quizState.tiempoInicio) / 1000),
       fecha: new Date().toISOString()
     };
     
-    guardarResultado(temaId, puntaje);
+    // Guardar resultado en localStorage
+    if (temaId) {
+      const clave = `score:${moduloId}:${temaId}`;
+      const datos = {
+        ...puntaje,
+        timestamp: new Date().toISOString(),
+        temaId,
+        grade: userGrade
+      };
+      localStorage.setItem(clave, JSON.stringify(datos));
+    }
+    
     setResultado(resultadoFinal);
     setQuizState(prev => ({ ...prev, isCompleted: true }));
   };
 
   const handleRetakeQuiz = () => {
-    const preguntasAleatorias = obtenerPreguntasAleatorias(temaId, 5);
-    setPreguntas(preguntasAleatorias);
-    setQuizState({
-      currentQuestion: 0,
-      respuestas: new Array(preguntasAleatorias.length).fill(-1),
-      isCompleted: false,
-      tiempoInicio: Date.now(),
-      tiempoTotal: 0
-    });
-    setResultado(null);
+    // Obtener nuevas preguntas aleatorias
+    const moduleName = getModuleName(moduloId);
+    const gradeContent = getContentByGrade(userGrade, moduleName);
+    if (gradeContent && temaId) {
+      const tema = gradeContent.temas.find(t => t.id === temaId);
+      if (tema && tema.preguntas) {
+        const preguntasAleatorias = [...tema.preguntas]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 5);
+        
+        setPreguntas(preguntasAleatorias);
+        setQuizState({
+          currentQuestion: 0,
+          respuestas: new Array(preguntasAleatorias.length).fill(-1),
+          isCompleted: false,
+          tiempoInicio: Date.now(),
+          tiempoTotal: 0
+        });
+        setResultado(null);
+      }
+    }
   };
 
   const getPuntajeColor = (puntaje: number) => {
@@ -231,10 +305,10 @@ const Quiz: React.FC = () => {
       <Card style={{ marginBottom: '16px' }}>
         <div style={{ textAlign: 'center' }}>
           <Title level={2} style={{ color: '#52c41a', margin: 0, fontSize: '24px' }}>
-            Examen: {tema.nombre}
+            Examen: {tema?.nombre || 'Tema no encontrado'}
           </Title>
           <Paragraph style={{ fontSize: '14px', margin: '8px 0 0 0', color: '#666' }}>
-            {tema.descripcion}
+            {tema?.descripcion || 'Descripción no disponible'}
           </Paragraph>
         </div>
       </Card>
@@ -430,7 +504,8 @@ const Quiz: React.FC = () => {
       <SOSModal
         visible={sosVisible}
         onClose={() => setSosVisible(false)}
-        moduloId="matematicas"
+        moduloId={moduloId}
+        temaId={temaId}
       />
     </div>
   );

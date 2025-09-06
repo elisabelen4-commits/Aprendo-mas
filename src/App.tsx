@@ -87,7 +87,7 @@ function App(): React.ReactElement {
               } 
             />
             
-            {/* Rutas protegidas de Tutoriales */}
+            {/* Rutas protegidas de Tutoriales - Matemáticas */}
             <Route 
               path="/matematicas/tutoriales" 
               element={
@@ -100,7 +100,61 @@ function App(): React.ReactElement {
               path="/matematicas/tutoriales/:temaId" 
               element={
                 <ProtectedRoute>
-                  <VideosTema />
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Rutas protegidas de Tutoriales - Español */}
+            <Route 
+              path="/espanol/tutoriales" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/espanol/tutoriales/:temaId" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Rutas protegidas de Tutoriales - Ciencias Sociales */}
+            <Route 
+              path="/ciencias-sociales/tutoriales" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/ciencias-sociales/tutoriales/:temaId" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Rutas protegidas de Tutoriales - Computación */}
+            <Route 
+              path="/computacion/tutoriales" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/computacion/tutoriales/:temaId" 
+              element={
+                <ProtectedRoute>
+                  <Tutoriales />
                 </ProtectedRoute>
               } 
             />
@@ -125,10 +179,54 @@ function App(): React.ReactElement {
             
             {/* Rutas protegidas de Exámenes - Español */}
             <Route 
+              path="/espanol/examenes" 
+              element={
+                <ProtectedRoute>
+                  <Examenes />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
               path="/espanol/examenes/:temaId/quiz" 
               element={
                 <ProtectedRoute>
-                  <QuizEspanol />
+                  <Quiz />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Rutas protegidas de Exámenes - Ciencias Sociales */}
+            <Route 
+              path="/ciencias-sociales/examenes" 
+              element={
+                <ProtectedRoute>
+                  <Examenes />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/ciencias-sociales/examenes/:temaId/quiz" 
+              element={
+                <ProtectedRoute>
+                  <Quiz />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Rutas protegidas de Exámenes - Computación */}
+            <Route 
+              path="/computacion/examenes" 
+              element={
+                <ProtectedRoute>
+                  <Examenes />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/computacion/examenes/:temaId/quiz" 
+              element={
+                <ProtectedRoute>
+                  <Quiz />
                 </ProtectedRoute>
               } 
             />

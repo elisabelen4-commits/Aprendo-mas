@@ -7,11 +7,13 @@ export interface User {
   email: string;
   role: 'admin' | 'user';
   name: string;
+  grade?: string;
 }
 
 export interface LoginCredentials {
   username: string;
   password: string;
+  grade: string;
 }
 
 export interface RegisterData {
@@ -19,6 +21,7 @@ export interface RegisterData {
   email: string;
   password: string;
   name: string;
+  grade: string;
 }
 
 export interface AuthState {
@@ -44,7 +47,8 @@ export const loginUser = createAsyncThunk(
           username: 'admin',
           email: 'admin@example.com',
           role: 'admin',
-          name: 'Administrador'
+          name: 'Administrador',
+          grade: credentials.grade
         };
         return user;
       }
@@ -56,7 +60,8 @@ export const loginUser = createAsyncThunk(
           username: credentials.username,
           email: `${credentials.username}@example.com`,
           role: 'user',
-          name: credentials.username
+          name: credentials.username,
+          grade: credentials.grade
         };
         return user;
       }
@@ -86,7 +91,8 @@ export const registerUser = createAsyncThunk(
         username: userData.username,
         email: userData.email,
         role: 'user',
-        name: userData.name || userData.username
+        name: userData.name || userData.username,
+        grade: userData.grade
       };
       
       return user;

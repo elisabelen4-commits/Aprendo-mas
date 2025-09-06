@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, Typography, Space, Row, Col, Button, Tag, Progress } from 'antd';
 import { PlayCircleOutlined, ClockCircleOutlined, BookOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { matematicasData } from '../data/matematicasData';
+import { getContentByGrade } from '../data/gradeContent';
+import { useGrade } from '../hooks/useGrade';
+import { getModuleName } from '../utils/moduleMapping';
+import TemaCompleto from '../components/TemaCompleto';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -12,29 +15,39 @@ interface VideoProgress {
 
 const Tutoriales: React.FC = () => {
   const navigate = useNavigate();
-  const { moduloId = 'matematicas' } = useParams<{ moduloId: string }>();
+  const { moduloId = 'matematicas', temaId } = useParams<{ moduloId: string; temaId?: string }>();
   const [videoProgress, setVideoProgress] = useState<VideoProgress>({});
+  const { getGrade, getGradeName } = useGrade();
+  const userGrade = getGrade();
 
-  // Obtener datos del módulo (por ahora solo matemáticas)
+  // Si hay un temaId, mostrar el tema completo
+  if (temaId) {
+    return (
+      <TemaCompleto
+        temaId={temaId}
+        moduloId={moduloId as any}
+        onIniciarExamen={() => navigate(`/${moduloId}/examenes/${temaId}/quiz`)}
+      />
+    );
+  }
+
+  // Obtener datos del módulo adaptados por grado
   const getModuloData = () => {
-    switch (moduloId) {
-      case 'matematicas':
-        return matematicasData;
-      default:
-        return matematicasData;
-    }
+    const moduleName = getModuleName(moduloId);
+    const gradeContent = getContentByGrade(userGrade, moduleName);
+    return gradeContent;
   };
 
   const moduloData = getModuloData();
 
   const handleVideoClick = (temaId: string, videoId: string) => {
-    navigate(`/matematicas/tutoriales/${temaId}`, { 
+    navigate(`/${moduloId}/tutoriales/${temaId}`, { 
       state: { videoId, moduloId } 
     });
   };
 
   const handleExamenClick = (temaId: string) => {
-    navigate(`/matematicas/examenes/${temaId}/quiz`);
+    navigate(`/${moduloId}/examenes/${temaId}/quiz`);
   };
 
   const markVideoAsCompleted = (videoId: string) => {
@@ -43,6 +56,16 @@ const Tutoriales: React.FC = () => {
       [videoId]: true
     }));
   };
+
+  if (!moduloData) {
+    return (
+      <div style={{ padding: '24px', textAlign: 'center' }}>
+        <Title level={3}>Contenido no disponible</Title>
+        <Paragraph>No hay contenido disponible para {getGradeName()} en este módulo.</Paragraph>
+        <Button onClick={() => navigate(-1)}>Volver</Button>
+      </div>
+    );
+  }
 
   const getProgressPercentage = () => {
     const totalVideos = moduloData.temas.reduce((acc, tema) => acc + tema.videos.length, 0);
@@ -64,10 +87,15 @@ const Tutoriales: React.FC = () => {
           <BookOutlined style={{ fontSize: '64px', color: '#1890ff' }} />
           <div>
             <Title level={1} style={{ color: '#1890ff', margin: 0 }}>
-              Tutoriales de Matemáticas
+              Tutoriales de {
+                moduloId === 'matematicas' ? 'Matemáticas' :
+                moduloId === 'espanol' ? 'Español' :
+                moduloId === 'ciencias-sociales' ? 'Ciencias Sociales' :
+                'Computación'
+              }
             </Title>
             <Paragraph style={{ fontSize: '18px', margin: '16px 0 0 0', color: '#666' }}>
-              Aprende paso a paso con nuestros videos educativos
+              Aprende paso a paso con nuestros videos educativos - {getGradeName()}
             </Paragraph>
           </div>
         </Space>
@@ -213,7 +241,7 @@ const Tutoriales: React.FC = () => {
       <div style={{ textAlign: 'center', marginTop: '32px' }}>
         <Button 
           size="large" 
-          onClick={() => navigate('/matematicas')}
+          onClick={() => navigate(`/${moduloId}`)}
           style={{ marginRight: '16px' }}
         >
           Volver al Módulo
@@ -221,7 +249,7 @@ const Tutoriales: React.FC = () => {
         <Button 
           type="primary" 
           size="large" 
-          onClick={() => navigate('/matematicas/examenes')}
+          onClick={() => navigate(`/${moduloId}/examenes`)}
         >
           Ir a Exámenes
         </Button>

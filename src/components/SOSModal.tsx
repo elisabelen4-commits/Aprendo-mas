@@ -6,6 +6,9 @@ import {
   CheckCircleOutlined,
   BulbOutlined
 } from '@ant-design/icons';
+import { getContentByGrade } from '../data/gradeContent';
+import { useGrade } from '../hooks/useGrade';
+import { getModuleName } from '../utils/moduleMapping';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -26,9 +29,10 @@ interface SOSModalProps {
   visible: boolean;
   onClose: () => void;
   moduloId: string;
+  temaId?: string;
 }
 
-const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
+const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId, temaId }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [stepCompleted, setStepCompleted] = useState<boolean>(false);
   const [miniPreguntaRespondida, setMiniPreguntaRespondida] = useState<boolean>(false);
@@ -36,9 +40,41 @@ const SOSModal: React.FC<SOSModalProps> = ({ visible, onClose, moduloId }) => {
   const [mostrarPista, setMostrarPista] = useState<boolean>(false);
   const [pistaActual, setPistaActual] = useState<string>('');
   const [pistaIndex, setPistaIndex] = useState<number>(0);
+  
+  const { getGrade } = useGrade();
+  const userGrade = getGrade();
 
-  // Datos específicos por módulo
+  // Datos específicos por módulo y grado
   const getSOSData = (): SOSStep[] => {
+    // Intentar obtener contenido específico por grado y tema
+    if (temaId) {
+      const moduleName = getModuleName(moduloId);
+      const gradeContent = getContentByGrade(userGrade, moduleName);
+      if (gradeContent) {
+        const tema = gradeContent.temas.find(t => t.id === temaId);
+        if (tema && tema.sosContent && tema.pistas) {
+          return tema.sosContent.map((sos, index) => ({
+            id: index + 1,
+            titulo: sos.titulo,
+            ejemplo: sos.explicacion,
+            svgIcon: `
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="40" height="40" rx="8" fill="#1890ff" opacity="0.1"/>
+                <text x="30" y="35" text-anchor="middle" fill="#1890ff" font-size="16" font-weight="bold">${index + 1}</text>
+              </svg>
+            `,
+            miniPregunta: {
+              pregunta: `¿Entiendes el paso ${index + 1}?`,
+              opciones: ['Sí', 'No', 'Más o menos', 'No sé'],
+              respuestaCorrecta: 0,
+              pistas: tema.pistas[index] || ['Piensa paso a paso', 'No te rindas', 'Puedes hacerlo']
+            }
+          }));
+        }
+      }
+    }
+
+    // Fallback a datos genéricos por módulo
     switch (moduloId) {
       case 'matematicas':
         return [

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { Form, Input, Button, Card, Typography, Alert } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined, UserAddOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Card, Typography, Alert, Select } from 'antd';
+import { UserOutlined, LockOutlined, MailOutlined, UserAddOutlined, BookOutlined } from '@ant-design/icons';
 import { registerUser, clearError, clearMessage } from '../store/authSlice';
 import { RootState } from '../store/store';
 import { useAppDispatch } from '../hooks/useAppDispatch';
@@ -15,6 +15,7 @@ interface RegisterFormValues {
   email: string;
   password: string;
   confirmPassword: string;
+  grade: string;
 }
 
 const Register: React.FC = () => {
@@ -41,7 +42,8 @@ const Register: React.FC = () => {
       username: values.username,
       email: values.email,
       password: values.password,
-      name: values.name
+      name: values.name,
+      grade: values.grade
     }));
   };
 
@@ -138,6 +140,33 @@ const Register: React.FC = () => {
               placeholder="Email"
               autoComplete="email"
             />
+          </Form.Item>
+
+          <Form.Item
+            name="grade"
+            rules={[
+              { required: true, message: 'Por favor selecciona tu grado!' }
+            ]}
+          >
+            <Select
+              placeholder="Grado que cursa"
+              size="large"
+              suffixIcon={<BookOutlined />}
+              style={{ width: '100%' }}
+            >
+              <Select.Option value="1">1.º Primaria</Select.Option>
+              <Select.Option value="2">2.º Primaria</Select.Option>
+              <Select.Option value="3">3.º Primaria</Select.Option>
+              <Select.Option value="4">4.º Primaria</Select.Option>
+              <Select.Option value="5">5.º Primaria</Select.Option>
+              <Select.Option value="6">6.º Primaria</Select.Option>
+              <Select.Option value="7">1.º Secundaria</Select.Option>
+              <Select.Option value="8">2.º Secundaria</Select.Option>
+              <Select.Option value="9">3.º Secundaria</Select.Option>
+              <Select.Option value="10">1.º Bachillerato</Select.Option>
+              <Select.Option value="11">2.º Bachillerato</Select.Option>
+              <Select.Option value="12">3.º Bachillerato</Select.Option>
+            </Select>
           </Form.Item>
 
           <Form.Item
