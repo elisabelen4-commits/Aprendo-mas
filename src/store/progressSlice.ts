@@ -216,6 +216,31 @@ const progressSlice = createSlice({
   initialState,
   reducers: {
     // Acciones síncronas
+    clearProgressState: (state) => {
+      // Resetear todo el estado al estado inicial
+      state.videoProgress = {};
+      state.examResults = {};
+      state.userStats = {
+        totalVideosWatched: 0,
+        totalExamsTaken: 0,
+        averageScore: 0,
+        totalStudyTime: 0,
+        currentStreak: 0,
+        longestStreak: 0,
+        badgesUnlocked: 0,
+        achievementsUnlocked: 0
+      };
+      state.badges = state.badges.map(badge => ({
+        ...badge,
+        unlockedAt: undefined
+      }));
+      state.achievements = state.achievements.map(achievement => ({
+        ...achievement,
+        unlockedAt: undefined
+      }));
+      state.isLoading = false;
+      state.error = null;
+    },
     updateVideoProgress: (state, action: PayloadAction<{ moduloId: string; videoId: string; completed: boolean }>) => {
       const { moduloId, videoId, completed } = action.payload;
       
@@ -407,6 +432,7 @@ const progressSlice = createSlice({
 
 // Exportar acciones y reducer
 export const { 
+  clearProgressState,
   updateVideoProgress, 
   updateStudyStreak, 
   checkBadgesAndAchievements 

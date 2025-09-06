@@ -42,7 +42,8 @@ const Dashboard: React.FC = () => {
     // Actualizar racha de estudio al cargar el dashboard
     dispatch(updateStudyStreak());
     dispatch(checkBadgesAndAchievements());
-  }, [dispatch]);
+    
+  }, [dispatch, examResults, userStats]);
 
   const getModuloProgress = (moduloId: string) => {
     const videos: VideoProgress[] = videoProgress[moduloId] || [];
@@ -53,6 +54,19 @@ const Dashboard: React.FC = () => {
       completed: completedVideos,
       total: totalVideos,
       percentage: totalVideos > 0 ? Math.round((completedVideos / totalVideos) * 100) : 0
+    };
+  };
+
+  const getModuloExamProgress = (moduloId: string) => {
+    const results: ExamResult[] = examResults[moduloId] || [];
+    const completedExams = new Set(results.map(r => r.temaId)).size; // Temas únicos completados
+    const totalTopics = modulosActivos.find(m => m.id === moduloId)?.data.temas.length || 0;
+    
+    
+    return {
+      completed: completedExams,
+      total: totalTopics,
+      percentage: totalTopics > 0 ? Math.round((completedExams / totalTopics) * 100) : 0
     };
   };
 
@@ -148,6 +162,7 @@ const Dashboard: React.FC = () => {
         <Row gutter={[24, 24]}>
           {modulosActivos.map((modulo) => {
             const progress = getModuloProgress(modulo.id);
+            const examProgress = getModuloExamProgress(modulo.id);
             const examStats = getModuloExamStats(modulo.id);
             
             return (
@@ -181,6 +196,19 @@ const Dashboard: React.FC = () => {
                       percent={progress.percentage} 
                       strokeColor={modulo.color}
                       size="small"
+                    />
+                  </div>
+
+                  <div style={{ marginBottom: '16px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                      <Text>Exámenes: {examProgress.completed}/{examProgress.total}</Text>
+                      <Text strong>{examProgress.percentage}%</Text>
+                    </div>
+                    <Progress 
+                      percent={examProgress.percentage} 
+                      strokeColor={modulo.color}
+                      size="small"
+                      strokeLinecap="round"
                     />
                   </div>
 
@@ -382,6 +410,80 @@ const Dashboard: React.FC = () => {
           </Card>
         </Col>
       </Row>
+
+      {/* Resultados Recientes de Exámenes */}
+      <Card title="Resultados Recientes de Exámenes" style={{ marginTop: '24px' }}>
+        {(() => {
+          // Obtener todos los resultados de exámenes de todos los módulos
+          const allResults = Object.entries(examResults)
+            .flatMap(([moduloId, results]) => 
+              (results as ExamResult[]).map((result: ExamResult) => ({ ...result, moduloId }))
+            )
+            .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime())
+            .slice(0, 10); // Mostrar solo los 10 más recientes
+
+          if (allResults.length === 0) {
+            return (
+              <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                <FileTextOutlined style={{ fontSize: '48px', color: '#d9d9d9', marginBottom: '16px' }} />
+                <Paragraph type="secondary">
+                  Aún no has completado ningún examen. ¡Comienza a estudiar!
+                </Paragraph>
+              </div>
+            );
+          }
+
+          return (
+            <List
+              dataSource={allResults}
+              renderItem={(result) => {
+                const modulo = modulosActivos.find(m => m.id === result.moduloId);
+                const getScoreColor = (score: number) => {
+                  if (score >= 80) return '#52c41a';
+                  if (score >= 60) return '#faad14';
+                  return '#f5222d';
+                };
+
+                return (
+                  <List.Item>
+                    <List.Item.Meta
+                      avatar={
+                        <Avatar 
+                          size={48} 
+                          style={{ backgroundColor: modulo?.color || '#1890ff' }}
+                          icon={modulo ? getIconComponent(modulo.icono) : <FileTextOutlined />}
+                        />
+                      }
+                      title={
+                        <Space>
+                          <Text strong>{modulo?.nombre || 'Módulo'}</Text>
+                          <Tag color={getScoreColor(result.puntaje)}>
+                            {result.puntaje}%
+                          </Tag>
+                        </Space>
+                      }
+                      description={
+                        <div>
+                          <Paragraph style={{ margin: '4px 0' }}>
+                            {result.correctas}/{result.total} preguntas correctas
+                          </Paragraph>
+                          <Text type="secondary" style={{ fontSize: '12px' }}>
+                            Completado el {new Date(result.completedAt).toLocaleDateString()} a las {new Date(result.completedAt).toLocaleTimeString()}
+                          </Text>
+                          <br />
+                          <Text type="secondary" style={{ fontSize: '12px' }}>
+                            Tiempo: {Math.round(result.tiempoTotal / 60)} minutos
+                          </Text>
+                        </div>
+                      }
+                    />
+                  </List.Item>
+                );
+              }}
+            />
+          );
+        })()}
+      </Card>
 
       {/* Estadísticas adicionales */}
       <Card title="Estadísticas Detalladas" style={{ marginTop: '24px' }}>

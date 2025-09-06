@@ -12,7 +12,8 @@ import {
   HomeOutlined
 } from '@ant-design/icons';
 import { logout } from '../store/authSlice';
-import { RootState } from '../store/store';
+import { clearProgressState } from '../store/progressSlice';
+import { RootState, persistor } from '../store/store';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
 const { Header: AntHeader } = Layout;
@@ -38,8 +39,16 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     dispatch(logout());
+    dispatch(clearProgressState());
+    
+    // Limpiar datos persistidos de Redux
+    await persistor.purge();
+    
+    // Limpiar localStorage
+    localStorage.clear();
+    
     navigate('/');
   };
 

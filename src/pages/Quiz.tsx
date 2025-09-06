@@ -10,9 +10,11 @@ import {
   ReloadOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons';
+import { useAppDispatch } from '../hooks/useAppDispatch';
 import { getContentByGrade } from '../data/gradeContent';
 import { useGrade } from '../hooks/useGrade';
 import { getModuleName } from '../utils/moduleMapping';
+import { saveExamResult } from '../store/progressSlice';
 import SOSModal from '../components/SOSModal';
 
 const { Title, Paragraph } = Typography;
@@ -28,6 +30,7 @@ interface QuizState {
 const Quiz: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
   const { temaId } = useParams<{ temaId: string }>();
   
   // Extraer moduloId de la URL
@@ -35,6 +38,7 @@ const Quiz: React.FC = () => {
   const moduloId = pathSegments[1] || 'matematicas';
   const { getGrade } = useGrade();
   const userGrade = getGrade();
+  
   
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestion: 0,
@@ -100,6 +104,7 @@ const Quiz: React.FC = () => {
     const newRespuestas = [...quizState.respuestas];
     newRespuestas[quizState.currentQuestion] = respuesta;
     
+    
     setQuizState(prev => ({
       ...prev,
       respuestas: newRespuestas
@@ -143,6 +148,19 @@ const Quiz: React.FC = () => {
           grade: userGrade
         };
         localStorage.setItem(clave, JSON.stringify(datos));
+      }
+      
+      // Guardar resultado en Redux
+      if (temaId) {
+        dispatch(saveExamResult({
+          temaId,
+          moduloId,
+          puntaje: puntaje.puntaje,
+          correctas: puntaje.correctas,
+          total: puntaje.total,
+          tiempoTotal: resultadoFinal.tiempoTotal,
+          attempts: 1 // Por ahora siempre 1, se puede mejorar después
+        }));
       }
       
       setResultado(resultadoFinal);
@@ -190,6 +208,19 @@ const Quiz: React.FC = () => {
         grade: userGrade
       };
       localStorage.setItem(clave, JSON.stringify(datos));
+    }
+    
+    // Guardar resultado en Redux
+    if (temaId) {
+      dispatch(saveExamResult({
+        temaId,
+        moduloId,
+        puntaje: puntaje.puntaje,
+        correctas: puntaje.correctas,
+        total: puntaje.total,
+        tiempoTotal: resultadoFinal.tiempoTotal,
+        attempts: 1 // Por ahora siempre 1, se puede mejorar después
+      }));
     }
     
     setResultado(resultadoFinal);
