@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Typography, Space, Button, Avatar, Dropdown, Badge } from 'antd';
 import { 
   UserOutlined, 
   LogoutOutlined, 
   DashboardOutlined,
   TrophyOutlined,
-  FireOutlined
+  FireOutlined,
+  ArrowLeftOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 import { logout } from '../store/authSlice';
 import { RootState } from '../store/store';
@@ -18,11 +20,14 @@ const { Title, Text } = Typography;
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
   const { userStats } = useSelector((state: RootState) => state.progress);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Verificar si estamos en la página principal
+  const isHomePage = location.pathname === '/';
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -41,6 +46,16 @@ const Header: React.FC = () => {
   const handleDashboardClick = () => {
     navigate('/dashboard');
   };
+
+  const handleBackClick = () => {
+    navigate(-1); // Navegar a la página anterior
+  };
+
+  const handleHomeClick = () => {
+    navigate('/'); // Navegar al inicio
+  };
+
+
 
   const userMenuItems = [
     {
@@ -66,24 +81,52 @@ const Header: React.FC = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       height: 'auto',
-      minHeight: '64px'
+      minHeight: '64px',
+      position: 'relative'
     }}>
-      {/* Logo y título */}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Title 
-          level={4} 
-          style={{ 
-            margin: 0, 
-            color: '#1890ff', 
-            cursor: 'pointer',
-            fontSize: isMobile ? '18px' : '20px',
-            lineHeight: '1.2'
-          }}
-          onClick={() => navigate('/')}
-        >
-          Aprendo+
-        </Title>
-      </div>
+      {/* Botón de regreso (solo cuando no está en homepage) */}
+      {!isHomePage && (
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Button
+            type="text"
+            icon={<ArrowLeftOutlined />}
+            onClick={handleBackClick}
+            style={{
+              padding: '4px 8px',
+              height: 'auto',
+              fontSize: isMobile ? '16px' : '18px',
+              color: '#1890ff',
+              border: 'none',
+              boxShadow: 'none'
+            }}
+            size="large"
+          >
+            {!isMobile && <span style={{ marginLeft: '4px' }}>Atrás</span>}
+          </Button>
+        </div>
+      )}
+
+      {/* Título a la izquierda (solo en homepage) */}
+      {isHomePage && (
+        <div style={{ 
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Title 
+            level={4} 
+            style={{ 
+              margin: 0, 
+              color: '#1890ff', 
+              cursor: 'pointer',
+              fontSize: isMobile ? '18px' : '20px',
+              lineHeight: '1.2'
+            }}
+            onClick={() => navigate('/')}
+          >
+            Aprendo+
+          </Title>
+        </div>
+      )}
 
       {/* Navegación y usuario - Desktop */}
       {!isMobile && (
@@ -91,6 +134,19 @@ const Header: React.FC = () => {
           <Space size="large">
             {isAuthenticated ? (
               <>
+                {/* Botón de inicio (solo cuando no está en homepage) */}
+                {!isHomePage && (
+                  <Button 
+                    type="text" 
+                    icon={<HomeOutlined style={{ color: '#1890ff' }} />}
+                    onClick={handleHomeClick}
+                    size="small"
+                    title="Ir al inicio"
+                  >
+                    Inicio
+                  </Button>
+                )}
+
                 {/* Estadísticas rápidas */}
                 <Space size="small">
                   <Badge count={userStats?.currentStreak || 0} showZero>
@@ -164,6 +220,18 @@ const Header: React.FC = () => {
           <Space size="small">
             {isAuthenticated ? (
               <>
+                {/* Botón de inicio (solo cuando no está en homepage) */}
+                {!isHomePage && (
+                  <Button 
+                    type="text" 
+                    icon={<HomeOutlined style={{ color: '#1890ff', fontSize: '16px' }} />}
+                    onClick={handleHomeClick}
+                    size="small"
+                    style={{ padding: '4px 8px', minWidth: 'auto' }}
+                    title="Ir al inicio"
+                  />
+                )}
+
                 {/* Estadísticas compactas en móvil */}
                 <Badge count={userStats?.currentStreak || 0} showZero size="small">
                   <Button 

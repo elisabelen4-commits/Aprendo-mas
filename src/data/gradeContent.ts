@@ -381,6 +381,171 @@ export const matematicasByGrade: GradeData = {
             archivo: 'audio-fracciones-pizza.mp3'
           }
         ]
+      },
+      {
+        id: 'multiplicacion-basica',
+        nombre: 'Multiplicación básica',
+        descripcion: 'Aprende las tablas de multiplicar y operaciones básicas',
+        videos: [
+          {
+            id: 'multiplicacion-1',
+            titulo: 'Las tablas de multiplicar',
+            duracion: '4:20',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Tablas del 1 al 5 y cómo memorizarlas'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuánto es 3 x 4?',
+            opciones: ['7', '12', '9', '8'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Cuánto es 5 x 2?',
+            opciones: ['7', '10', '12', '8'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Cuánto es 2 x 6?',
+            opciones: ['8', '12', '10', '14'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: '¿Cómo multiplicar?',
+            explicacion: 'La multiplicación es sumar el mismo número varias veces',
+            imagen: 'multiplicacion-basica.svg',
+            audio: 'sos-multiplicacion-basica.mp3'
+          }
+        ],
+        pistas: [
+          ['Recuerda que 3 x 4 = 3 + 3 + 3 + 3'],
+          ['Las tablas de multiplicar te ayudan a calcular más rápido'],
+          ['Practica con objetos: 2 grupos de 3 manzanas = 6 manzanas']
+        ],
+        explicacionVoz: 'La multiplicación es una forma rápida de sumar el mismo número varias veces. Por ejemplo, 3 x 4 significa sumar 3 cuatro veces: 3 + 3 + 3 + 3 = 12.',
+        audioRadio: [
+          {
+            titulo: 'Tablas de multiplicar',
+            duracion: '3:15',
+            archivo: 'audio-tablas-multiplicar.mp3'
+          }
+        ]
+      },
+      {
+        id: 'division-basica',
+        nombre: 'División básica',
+        descripcion: 'Aprende a dividir números pequeños',
+        videos: [
+          {
+            id: 'division-1',
+            titulo: '¿Qué es la división?',
+            duracion: '4:45',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'La división como repartir en partes iguales'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuánto es 12 ÷ 3?',
+            opciones: ['4', '3', '5', '6'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 2,
+            pregunta: '¿Cuánto es 15 ÷ 5?',
+            opciones: ['2', '3', '4', '5'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Cuánto es 8 ÷ 2?',
+            opciones: ['3', '4', '5', '6'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: '¿Cómo dividir?',
+            explicacion: 'La división es repartir en partes iguales',
+            imagen: 'division-basica.svg',
+            audio: 'sos-division-basica.mp3'
+          }
+        ],
+        pistas: [
+          ['12 ÷ 3 significa repartir 12 en 3 grupos iguales'],
+          ['Cada grupo tendrá 4 elementos'],
+          ['La división es lo contrario de la multiplicación']
+        ],
+        explicacionVoz: 'La división es repartir una cantidad en partes iguales. Por ejemplo, 12 ÷ 3 significa repartir 12 elementos en 3 grupos iguales, cada grupo tendrá 4 elementos.',
+        audioRadio: [
+          {
+            titulo: 'División básica',
+            duracion: '2:50',
+            archivo: 'audio-division-simple.mp3'
+          }
+        ]
+      },
+      {
+        id: 'geometria-basica',
+        nombre: 'Geometría básica',
+        descripcion: 'Aprende sobre formas, líneas y ángulos',
+        videos: [
+          {
+            id: 'geometria-1',
+            titulo: 'Formas geométricas',
+            duracion: '5:10',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Círculos, cuadrados, triángulos y rectángulos'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuántos lados tiene un triángulo?',
+            opciones: ['2', '3', '4', '5'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué forma tiene una pelota?',
+            opciones: ['Cuadrado', 'Círculo', 'Triángulo', 'Rectángulo'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Cuántos lados tiene un cuadrado?',
+            opciones: ['3', '4', '5', '6'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Formas básicas',
+            explicacion: 'Las formas están en todas partes',
+            imagen: 'formas-geometricas.svg',
+            audio: 'sos-formas-geometricas.mp3'
+          }
+        ],
+        pistas: [
+          ['Un triángulo tiene 3 lados y 3 esquinas'],
+          ['Un cuadrado tiene 4 lados iguales'],
+          ['Un círculo no tiene esquinas, es redondo']
+        ],
+        explicacionVoz: 'Las formas geométricas están en todas partes. Un triángulo tiene 3 lados, un cuadrado tiene 4 lados iguales, y un círculo es redondo sin esquinas.',
+        audioRadio: [
+          {
+            titulo: 'Geometría básica',
+            duracion: '3:00',
+            archivo: 'audio-geometria-basica.mp3'
+          }
+        ]
       }
     ]
   },
@@ -727,6 +892,171 @@ export const espanolByGrade: GradeData = {
             titulo: 'Tonos de voz',
             duracion: '1:45',
             archivo: 'audio-tonos-voz.mp3'
+          }
+        ]
+      },
+      {
+        id: 'vocabulario-basico',
+        nombre: 'Vocabulario básico',
+        descripcion: 'Amplía tu vocabulario con palabras nuevas',
+        videos: [
+          {
+            id: 'vocabulario-1',
+            titulo: 'Palabras nuevas',
+            duracion: '4:15',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Aprende palabras nuevas y su significado'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué significa "enorme"?',
+            opciones: ['Muy pequeño', 'Muy grande', 'Muy rápido', 'Muy lento'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué significa "rápido"?',
+            opciones: ['Lento', 'Veloz', 'Grande', 'Pequeño'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué significa "hermoso"?',
+            opciones: ['Feo', 'Bonito', 'Grande', 'Pequeño'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Busca el significado',
+            explicacion: 'Si no sabes una palabra, busca su significado en el diccionario.',
+            imagen: 'buscar-significado.svg',
+            audio: 'sos-espanol-vocabulario.mp3'
+          }
+        ],
+        pistas: [
+          ['Lee la oración completa para entender el contexto'],
+          ['Busca palabras similares que ya conozcas'],
+          ['Usa un diccionario o pide ayuda a un adulto']
+        ],
+        explicacionVoz: 'Cuando encuentres una palabra nueva, no te preocupes. Lee toda la oración para entender el contexto y busca el significado en un diccionario.',
+        audioRadio: [
+          {
+            titulo: 'Palabras nuevas',
+            duracion: '2:30',
+            archivo: 'audio-vocabulario-basico.mp3'
+          }
+        ]
+      },
+      {
+        id: 'rimas-poemas',
+        nombre: 'Rimas y poemas',
+        descripcion: 'Aprende sobre rimas y poemas simples',
+        videos: [
+          {
+            id: 'rimas-1',
+            titulo: '¿Qué es una rima?',
+            duracion: '3:45',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Las rimas y cómo crear poemas simples'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué palabras riman con "casa"?',
+            opciones: ['Mesa', 'Masa', 'Silla', 'Mesa'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué palabras riman con "sol"?',
+            opciones: ['Luna', 'Col', 'Mar', 'Cielo'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué es una rima?',
+            opciones: ['Palabras iguales', 'Palabras que suenan igual al final', 'Palabras largas', 'Palabras cortas'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Busca palabras que rimen',
+            explicacion: 'Las rimas son palabras que terminan con el mismo sonido.',
+            imagen: 'buscar-rimas.svg',
+            audio: 'sos-espanol-rimas.mp3'
+          }
+        ],
+        pistas: [
+          ['Escucha el sonido final de las palabras'],
+          ['Casa y masa terminan con el mismo sonido'],
+          ['Las rimas hacen que los poemas suenen bonito']
+        ],
+        explicacionVoz: 'Las rimas son palabras que terminan con el mismo sonido. Por ejemplo, casa y masa riman porque terminan con el sonido "asa".',
+        audioRadio: [
+          {
+            titulo: 'Rimas divertidas',
+            duracion: '2:45',
+            archivo: 'audio-rimas-poemas.mp3'
+          }
+        ]
+      },
+      {
+        id: 'cuentos-fabulas',
+        nombre: 'Cuentos y fábulas',
+        descripcion: 'Aprende sobre cuentos y fábulas tradicionales',
+        videos: [
+          {
+            id: 'cuentos-1',
+            titulo: '¿Qué es un cuento?',
+            duracion: '4:30',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Los cuentos y sus personajes principales'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Quién es el protagonista en "La Cenicienta"?',
+            opciones: ['La madrastra', 'Cenicienta', 'El príncipe', 'Las hermanastras'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué enseña la fábula "La liebre y la tortuga"?',
+            opciones: ['Ser rápido', 'Ser constante', 'Ser grande', 'Ser pequeño'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué es una fábula?',
+            opciones: ['Una historia real', 'Una historia con animales que enseña algo', 'Una historia de amor', 'Una historia de miedo'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Identifica el mensaje',
+            explicacion: 'Los cuentos y fábulas siempre tienen una enseñanza.',
+            imagen: 'identificar-mensaje.svg',
+            audio: 'sos-espanol-cuentos.mp3'
+          }
+        ],
+        pistas: [
+          ['Los cuentos tienen personajes principales'],
+          ['Las fábulas enseñan lecciones importantes'],
+          ['Pregúntate: ¿qué aprendí de esta historia?']
+        ],
+        explicacionVoz: 'Los cuentos y fábulas no solo son entretenidos, también nos enseñan lecciones importantes. Siempre pregúntate qué mensaje quiere darte la historia.',
+        audioRadio: [
+          {
+            titulo: 'Cuentos tradicionales',
+            duracion: '3:15',
+            archivo: 'audio-cuentos-fabulas.mp3'
           }
         ]
       }
@@ -1333,6 +1663,171 @@ export const cienciasSocialesByGrade: GradeData = {
             archivo: 'audio-valores-convivencia.mp3'
           }
         ]
+      },
+      {
+        id: 'profesiones-oficios',
+        nombre: 'Profesiones y oficios',
+        descripcion: 'Conoce las diferentes profesiones y oficios en la comunidad',
+        videos: [
+          {
+            id: 'profesiones-1',
+            titulo: '¿Qué hacen los profesionales?',
+            duracion: '4:20',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Las diferentes profesiones y cómo ayudan a la comunidad'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué hace un médico?',
+            opciones: ['Construye casas', 'Cura a los enfermos', 'Enseña en la escuela', 'Vende comida'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué hace un bombero?',
+            opciones: ['Apaga incendios', 'Cura enfermos', 'Enseña niños', 'Vende ropa'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué hace un maestro?',
+            opciones: ['Construye casas', 'Cura enfermos', 'Enseña a los niños', 'Apaga incendios'],
+            respuestaCorrecta: 2
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Observa las profesiones',
+            explicacion: 'Mira qué hacen las personas en tu comunidad.',
+            imagen: 'observar-profesiones.svg',
+            audio: 'sos-sociales-profesiones.mp3'
+          }
+        ],
+        pistas: [
+          ['Observa qué hacen las personas en tu barrio'],
+          ['Cada profesión ayuda a la comunidad de diferente manera'],
+          ['Pregunta a los adultos sobre su trabajo']
+        ],
+        explicacionVoz: 'Las profesiones son trabajos que las personas hacen para ayudar a la comunidad. Cada profesión es importante y necesaria.',
+        audioRadio: [
+          {
+            titulo: 'Profesiones importantes',
+            duracion: '2:45',
+            archivo: 'audio-profesiones-oficios.mp3'
+          }
+        ]
+      },
+      {
+        id: 'medios-transporte',
+        nombre: 'Medios de transporte',
+        descripcion: 'Aprende sobre los diferentes medios de transporte',
+        videos: [
+          {
+            id: 'transporte-1',
+            titulo: '¿Cómo nos movemos?',
+            duracion: '3:50',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Los diferentes medios de transporte terrestre, aéreo y acuático'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Cuál es un medio de transporte terrestre?',
+            opciones: ['Avión', 'Barco', 'Carro', 'Helicóptero'],
+            respuestaCorrecta: 2
+          },
+          {
+            id: 2,
+            pregunta: '¿Cuál es un medio de transporte aéreo?',
+            opciones: ['Carro', 'Barco', 'Avión', 'Bicicleta'],
+            respuestaCorrecta: 2
+          },
+          {
+            id: 3,
+            pregunta: '¿Cuál es un medio de transporte acuático?',
+            opciones: ['Carro', 'Avión', 'Barco', 'Tren'],
+            respuestaCorrecta: 2
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Identifica el transporte',
+            explicacion: 'Observa qué medios de transporte usas cada día.',
+            imagen: 'identificar-transporte.svg',
+            audio: 'sos-sociales-transporte.mp3'
+          }
+        ],
+        pistas: [
+          ['Los carros y buses van por la tierra'],
+          ['Los aviones vuelan por el aire'],
+          ['Los barcos navegan por el agua']
+        ],
+        explicacionVoz: 'Los medios de transporte nos ayudan a movernos de un lugar a otro. Algunos van por tierra, otros por aire y otros por agua.',
+        audioRadio: [
+          {
+            titulo: 'Medios de transporte',
+            duracion: '2:30',
+            archivo: 'audio-medios-transporte.mp3'
+          }
+        ]
+      },
+      {
+        id: 'cuidado-medio-ambiente',
+        nombre: 'Cuidado del medio ambiente',
+        descripcion: 'Aprende a cuidar nuestro planeta',
+        videos: [
+          {
+            id: 'medio-ambiente-1',
+            titulo: '¿Cómo cuidar la naturaleza?',
+            duracion: '4:10',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'La importancia de cuidar el medio ambiente'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué podemos hacer para cuidar el agua?',
+            opciones: ['Gastarla mucho', 'Cerrar la llave', 'Dejarla corriendo', 'No usarla'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Dónde debemos tirar la basura?',
+            opciones: ['En la calle', 'En el basurero', 'En el río', 'En cualquier lugar'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Por qué es importante cuidar las plantas?',
+            opciones: ['Porque dan oxígeno', 'Porque son bonitas', 'Porque son verdes', 'Porque crecen'],
+            respuestaCorrecta: 0
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Practica el cuidado',
+            explicacion: 'Recuerda cerrar la llave y tirar la basura en su lugar.',
+            imagen: 'practicar-cuidado.svg',
+            audio: 'sos-sociales-medio-ambiente.mp3'
+          }
+        ],
+        pistas: [
+          ['Cierra la llave cuando no uses el agua'],
+          ['Tira la basura en el basurero'],
+          ['Cuida las plantas y los árboles']
+        ],
+        explicacionVoz: 'Cuidar el medio ambiente es responsabilidad de todos. Pequeñas acciones como cerrar la llave y tirar la basura en su lugar ayudan mucho.',
+        audioRadio: [
+          {
+            titulo: 'Cuidando nuestro planeta',
+            duracion: '2:55',
+            archivo: 'audio-cuidado-medio-ambiente.mp3'
+          }
+        ]
       }
     ]
   },
@@ -1937,6 +2432,171 @@ export const computacionByGrade: GradeData = {
             archivo: 'audio-reglas-seguridad.mp3'
           }
         ]
+      },
+      {
+        id: 'navegacion-internet',
+        nombre: 'Navegación en internet',
+        descripcion: 'Aprende a navegar de forma segura en internet',
+        videos: [
+          {
+            id: 'navegacion-1',
+            titulo: '¿Qué es internet?',
+            duracion: '4:25',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Cómo funciona internet y cómo navegar de forma segura'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es internet?',
+            opciones: ['Un juguete', 'Una red de computadoras', 'Un libro', 'Una película'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué es un navegador?',
+            opciones: ['Un programa para navegar en internet', 'Un barco', 'Un avión', 'Un carro'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 3,
+            pregunta: '¿Qué es una URL?',
+            opciones: ['Una dirección de internet', 'Un nombre', 'Un color', 'Un número'],
+            respuestaCorrecta: 0
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Navega con cuidado',
+            explicacion: 'Siempre pide permiso antes de usar internet.',
+            imagen: 'navegar-cuidado.svg',
+            audio: 'sos-computacion-navegacion.mp3'
+          }
+        ],
+        pistas: [
+          ['Siempre pide permiso a un adulto antes de usar internet'],
+          ['No compartas información personal en internet'],
+          ['Si ves algo que te molesta, avisa a un adulto']
+        ],
+        explicacionVoz: 'Internet es una herramienta muy útil, pero debemos usarla con cuidado. Siempre pide permiso a un adulto y no compartas información personal.',
+        audioRadio: [
+          {
+            titulo: 'Internet seguro',
+            duracion: '2:40',
+            archivo: 'audio-navegacion-internet.mp3'
+          }
+        ]
+      },
+      {
+        id: 'crear-documentos',
+        nombre: 'Crear documentos',
+        descripcion: 'Aprende a crear y editar documentos de texto',
+        videos: [
+          {
+            id: 'documentos-1',
+            titulo: '¿Cómo crear un documento?',
+            duracion: '4:15',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Crear, escribir y guardar documentos de texto'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es un documento de texto?',
+            opciones: ['Una imagen', 'Un archivo con palabras', 'Un video', 'Un sonido'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 2,
+            pregunta: '¿Cómo se llama el programa para escribir?',
+            opciones: ['Paint', 'Word', 'Excel', 'PowerPoint'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Para qué sirve guardar un documento?',
+            opciones: ['Para perderlo', 'Para conservarlo', 'Para borrarlo', 'Para olvidarlo'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Guarda tu trabajo',
+            explicacion: 'Siempre guarda tu documento para no perderlo.',
+            imagen: 'guardar-documento.svg',
+            audio: 'sos-computacion-documentos.mp3'
+          }
+        ],
+        pistas: [
+          ['Guarda tu documento cada pocos minutos'],
+          ['Usa un nombre descriptivo para tu archivo'],
+          ['Guarda en una carpeta que recuerdes']
+        ],
+        explicacionVoz: 'Es muy importante guardar tu trabajo regularmente. Si no guardas tu documento, podrías perder todo lo que has escrito.',
+        audioRadio: [
+          {
+            titulo: 'Creando documentos',
+            duracion: '2:50',
+            archivo: 'audio-crear-documentos.mp3'
+          }
+        ]
+      },
+      {
+        id: 'dibujar-pintar',
+        nombre: 'Dibujar y pintar',
+        descripcion: 'Aprende a usar programas de dibujo y pintura',
+        videos: [
+          {
+            id: 'dibujar-1',
+            titulo: '¿Cómo dibujar en la computadora?',
+            duracion: '3:55',
+            url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            descripcion: 'Usar herramientas de dibujo y pintura digital'
+          }
+        ],
+        preguntas: [
+          {
+            id: 1,
+            pregunta: '¿Qué es Paint?',
+            opciones: ['Un programa para dibujar', 'Un juego', 'Un video', 'Una canción'],
+            respuestaCorrecta: 0
+          },
+          {
+            id: 2,
+            pregunta: '¿Qué herramienta usas para pintar?',
+            opciones: ['La goma', 'El pincel', 'El texto', 'La línea'],
+            respuestaCorrecta: 1
+          },
+          {
+            id: 3,
+            pregunta: '¿Cómo cambias el color?',
+            opciones: ['Gritando', 'Haciendo clic en la paleta', 'Cerrando los ojos', 'Saltando'],
+            respuestaCorrecta: 1
+          }
+        ],
+        sosContent: [
+          {
+            titulo: 'Experimenta con colores',
+            explicacion: 'Prueba diferentes colores y herramientas para crear.',
+            imagen: 'experimentar-colores.svg',
+            audio: 'sos-computacion-dibujar.mp3'
+          }
+        ],
+        pistas: [
+          ['Prueba diferentes herramientas de dibujo'],
+          ['Experimenta con colores y tamaños'],
+          ['No tengas miedo de hacer errores, puedes borrar']
+        ],
+        explicacionVoz: 'Dibujar en la computadora es divertido. Prueba diferentes herramientas, colores y tamaños. Si cometes un error, puedes borrar y empezar de nuevo.',
+        audioRadio: [
+          {
+            titulo: 'Arte digital',
+            duracion: '2:35',
+            archivo: 'audio-dibujar-pintar.mp3'
+          }
+        ]
       }
     ]
   },
@@ -2294,6 +2954,15 @@ export const getContentByGrade = (grade: string, module: 'matematicas' | 'espano
     'ciencias-sociales': cienciasSocialesByGrade,
     'computacion': computacionByGrade
   };
+
+  // Debug: Log para verificar qué está pasando
+  console.log('=== DEBUG getContentByGrade ===');
+  console.log('grade:', grade);
+  console.log('module:', module);
+  console.log('gradeData[module]:', gradeData[module]);
+  console.log('available grades:', Object.keys(gradeData[module] || {}));
+  console.log('specificContent:', gradeData[module]?.[grade]);
+  console.log('==============================');
 
   // Intentar obtener contenido específico para el grado
   const specificContent = gradeData[module]?.[grade];
