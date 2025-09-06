@@ -23,7 +23,7 @@ const { Content } = Layout;
 
 function App(): React.ReactElement {
   return (
-    <Router>
+    <Router basename="/Aprendo-mas">
       <Layout style={{ minHeight: '100vh' }}>
         <Header />
         <Content>
