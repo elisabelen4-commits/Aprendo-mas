@@ -45,6 +45,32 @@ const Header: React.FC = () => {
 
   const handleDashboardClick = () => {
     navigate('/dashboard');
+    // Scroll al inicio de la página
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleRachaClick = () => {
+    navigate('/dashboard');
+    // Scroll a la sección de racha
+    setTimeout(() => {
+      const rachaSection = document.getElementById('racha-section');
+      if (rachaSection) {
+        rachaSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  const handleBadgesClick = () => {
+    navigate('/dashboard');
+    // Scroll a la sección de badges
+    setTimeout(() => {
+      const badgesSection = document.getElementById('badges-section');
+      if (badgesSection) {
+        badgesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const handleBackClick = () => {
@@ -153,7 +179,7 @@ const Header: React.FC = () => {
                     <Button 
                       type="text" 
                       icon={<FireOutlined style={{ color: '#f5222d' }} />}
-                      onClick={handleDashboardClick}
+                      onClick={handleRachaClick}
                       size="small"
                     >
                       Racha
@@ -164,7 +190,7 @@ const Header: React.FC = () => {
                     <Button 
                       type="text" 
                       icon={<TrophyOutlined style={{ color: '#faad14' }} />}
-                      onClick={handleDashboardClick}
+                      onClick={handleBadgesClick}
                       size="small"
                     >
                       Badges
@@ -174,8 +200,8 @@ const Header: React.FC = () => {
 
                 {/* Botón del Dashboard */}
                 <Button 
-                  type="primary" 
-                  icon={<DashboardOutlined />}
+                  type="text" 
+                  icon={<DashboardOutlined style={{ color: '#1890ff' }} />}
                   onClick={handleDashboardClick}
                   size="small"
                 >
@@ -237,9 +263,10 @@ const Header: React.FC = () => {
                   <Button 
                     type="text" 
                     icon={<FireOutlined style={{ color: '#f5222d', fontSize: '16px' }} />}
-                    onClick={handleDashboardClick}
+                    onClick={handleRachaClick}
                     size="small"
                     style={{ padding: '4px 8px', minWidth: 'auto' }}
+                    title="Ver Racha"
                   />
                 </Badge>
                 
@@ -247,22 +274,22 @@ const Header: React.FC = () => {
                   <Button 
                     type="text" 
                     icon={<TrophyOutlined style={{ color: '#faad14', fontSize: '16px' }} />}
-                    onClick={handleDashboardClick}
+                    onClick={handleBadgesClick}
                     size="small"
                     style={{ padding: '4px 8px', minWidth: 'auto' }}
+                    title="Ver Badges"
                   />
                 </Badge>
 
                 {/* Botón Dashboard compacto */}
                 <Button 
-                  type="primary" 
-                  icon={<DashboardOutlined />}
+                  type="text" 
+                  icon={<DashboardOutlined style={{ color: '#1890ff', fontSize: '16px' }} />}
                   onClick={handleDashboardClick}
                   size="small"
-                  style={{ padding: '4px 12px' }}
-                >
-                  <span style={{ fontSize: '12px' }}>Dash</span>
-                </Button>
+                  style={{ padding: '4px 8px', minWidth: 'auto' }}
+                  title="Dashboard"
+                />
 
                 {/* Avatar compacto */}
                 <Dropdown

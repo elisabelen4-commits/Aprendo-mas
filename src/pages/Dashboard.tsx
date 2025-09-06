@@ -131,7 +131,7 @@ const Dashboard: React.FC = () => {
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card>
+          <Card id="racha-section">
             <Statistic
               title="Racha Actual"
               value={userStats.currentStreak}
@@ -224,7 +224,7 @@ const Dashboard: React.FC = () => {
       <Row gutter={24}>
         {/* Badges */}
         <Col xs={24} lg={12}>
-          <Card title="Badges Desbloqueados" style={{ marginBottom: '24px' }}>
+          <Card id="badges-section" title="Badges Desbloqueados" style={{ marginBottom: '24px' }}>
             <List
               dataSource={badges.filter((b: BadgeType) => b.unlockedAt)}
               renderItem={(badge: BadgeType) => (
