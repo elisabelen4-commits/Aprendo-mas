@@ -2,6 +2,15 @@
 
 Una plataforma educativa moderna construida con **React + TypeScript**, Redux Toolkit y Ant Design que ofrece módulos de aprendizaje interactivos con sistema de autenticación completo.
 
+## 🌐 Deployment
+
+Este proyecto está configurado para desplegarse automáticamente en **GitHub Pages**:
+
+- **URL de producción**: `https://[usuario].github.io/Aprendo-mas/`
+- **Deploy automático**: Cada push a `main` despliega automáticamente
+- **CI/CD**: Verificación de tipos, linting y build antes del deploy
+- **Configuración**: Ver [DEPLOYMENT.md](./DEPLOYMENT.md) para detalles completos
+
 ## 🚀 Características
 
 ### Sistema de Autenticación
