@@ -3,6 +3,40 @@ import { espanolData } from './espanolData';
 import { cienciasSocialesData } from './cienciasSocialesData';
 import { computacionData } from './computacionData';
 
+interface ModuloData {
+  temas: Array<{
+    id: string;
+    nombre: string;
+    descripcion: string;
+    videos: Array<{
+      id: string;
+      titulo: string;
+      duracion: string;
+      url: string;
+      descripcion: string;
+    }>;
+    preguntas: Array<{
+      id: number;
+      pregunta: string;
+      opciones: string[];
+      respuestaCorrecta: number;
+    }>;
+    sosContent: Array<{
+      titulo: string;
+      explicacion: string;
+      imagen: string;
+      audio: string;
+    }>;
+    pistas: string[][];
+    explicacionVoz: string;
+    audioRadio: Array<{
+      titulo: string;
+      duracion: string;
+      archivo: string;
+    }>;
+  }>;
+}
+
 export interface Modulo {
   id: string;
   nombre: string;
@@ -11,7 +45,7 @@ export interface Modulo {
   activo: boolean;
   color: string;
   requiereAuth: boolean;
-  data: any;
+  data: ModuloData;
   rutas: {
     principal: string;
     tutoriales: string;

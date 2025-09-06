@@ -330,14 +330,16 @@ const progressSlice = createSlice({
         let shouldUnlock = false;
         
         switch (achievement.id) {
-          case 'early-bird':
+          case 'early-bird': {
             const now = new Date();
             shouldUnlock = now.getHours() < 8;
             break;
-          case 'night-owl':
+          }
+          case 'night-owl': {
             const currentHour = new Date().getHours();
             shouldUnlock = currentHour >= 22;
             break;
+          }
           // Más achievements pueden ser agregados aquí
         }
         

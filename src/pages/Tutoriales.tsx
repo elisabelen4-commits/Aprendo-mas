@@ -30,7 +30,7 @@ const Tutoriales: React.FC = () => {
     return (
       <TemaCompleto
         temaId={temaId}
-        moduloId={moduloId as any}
+        moduloId={moduloId as 'matematicas' | 'espanol' | 'ciencias-sociales' | 'computacion'}
         onIniciarExamen={() => navigate(`/${moduloId}/examenes/${temaId}/quiz`)}
       />
     );
@@ -78,9 +78,9 @@ const Tutoriales: React.FC = () => {
     return totalVideos > 0 ? Math.round((completedVideos / totalVideos) * 100) : 0;
   };
 
-  const getTemaProgress = (tema: any) => {
+  const getTemaProgress = (tema: { videos: Array<{ id: string; titulo: string; duracion: string; url: string; descripcion: string; }> }) => {
     const totalVideos = tema.videos.length;
-    const completedVideos = tema.videos.filter((video: any) => videoProgress[video.id]).length;
+    const completedVideos = tema.videos.filter((video: { id: string; titulo: string; duracion: string; url: string; descripcion: string; }) => videoProgress[video.id]).length;
     return totalVideos > 0 ? Math.round((completedVideos / totalVideos) * 100) : 0;
   };
 

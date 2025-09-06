@@ -48,8 +48,19 @@ const Quiz: React.FC = () => {
     tiempoTotal: 0
   });
 
-  const [preguntas, setPreguntas] = useState<any[]>([]);
-  const [resultado, setResultado] = useState<any>(null);
+  const [preguntas, setPreguntas] = useState<Array<{
+    id: number;
+    pregunta: string;
+    opciones: string[];
+    respuestaCorrecta: number;
+  }>>([]);
+  const [resultado, setResultado] = useState<{
+    correctas: number;
+    total: number;
+    puntaje: number;
+    tiempoTotal: number;
+    fecha: string;
+  } | null>(null);
   const [sosVisible, setSosVisible] = useState<boolean>(false);
 
   useEffect(() => {

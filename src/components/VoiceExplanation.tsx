@@ -64,7 +64,7 @@ const VoiceExplanation: React.FC<VoiceExplanationProps> = ({
       const key = `explicacion_mejorada_${moduloId}_${temaId}_${grade}`;
       localStorage.setItem(key, explicacionAdaptada);
       
-    } catch (err) {
+    } catch {
       setError('Error al generar explicación mejorada. Usando explicación base.');
     } finally {
       setIsGenerating(false);

@@ -33,7 +33,7 @@ const Examenes: React.FC = () => {
     navigate(`/${moduloId}/tutoriales`);
   };
 
-  const getTemaStats = (tema: any) => {
+  const getTemaStats = (tema: { id: string; nombre: string; descripcion: string; videos: Array<{ id: string; titulo: string; duracion: string; url: string; descripcion: string; }>; preguntas: Array<{ id: number; pregunta: string; opciones: string[]; respuestaCorrecta: number; }> }) => {
     // Obtener último resultado desde localStorage
     const clave = `score:${moduloId}:${tema.id}`;
     const datos = localStorage.getItem(clave);

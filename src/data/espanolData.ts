@@ -232,7 +232,14 @@ export const guardarResultado = (temaId: string, resultado: { correctas: number;
 };
 
 // Función para obtener último resultado
-export const obtenerUltimoResultado = (temaId: string): any => {
+export const obtenerUltimoResultado = (temaId: string): {
+  correctas: number;
+  total: number;
+  puntaje: number;
+  timestamp: string;
+  temaId: string;
+  grade: string;
+} | null => {
   const clave = `score:espanol:${temaId}`;
   const datos = localStorage.getItem(clave);
   return datos ? JSON.parse(datos) : null;

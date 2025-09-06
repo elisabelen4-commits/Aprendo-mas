@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
   const getModuloProgress = (moduloId: string) => {
     const videos: VideoProgress[] = videoProgress[moduloId] || [];
     const completedVideos = videos.filter((v: VideoProgress) => v.completed).length;
-    const totalVideos = modulosActivos.find(m => m.id === moduloId)?.data.temas.reduce((acc: number, tema: any) => acc + tema.videos.length, 0) || 0;
+    const totalVideos = modulosActivos.find(m => m.id === moduloId)?.data.temas.reduce((acc: number, tema: { videos: Array<{ id: string; titulo: string; duracion: string; url: string; descripcion: string; }> }) => acc + tema.videos.length, 0) || 0;
     
     return {
       completed: completedVideos,

@@ -104,7 +104,7 @@ const RadioModeAudio: React.FC<RadioModeAudioProps> = ({
       setIsPlaying(true);
       setAudioError('');
 
-    } catch (error) {
+    } catch {
       setAudioError(`Error al reproducir: ${audioItem.titulo}`);
       setIsPlaying(false);
       setCurrentAudio(null);
